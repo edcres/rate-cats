@@ -1,4 +1,17 @@
 package com.example.ratecats.data
 
-data class CatPhoto {
-}
+import com.squareup.moshi.Json
+
+data class CatPhoto (
+    @Json(name = "url")
+    val id: String,
+    @Json(name = "url")
+    val imgSrcUrl: String,
+    // todo: the breed attribute might not work
+    @Json(name = "breeds")
+    val breeds: List<Any>,
+    @Json(name = "width")
+    val width: Int,
+    @Json(name = "height")
+    val height: Int,
+)
