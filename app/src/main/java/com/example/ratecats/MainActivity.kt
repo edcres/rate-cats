@@ -6,6 +6,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 
+/** todo:
+ * - internet permissions
+ * - gradle dependencies (if any)
+ * - viewModel
+ * - backend
+ * - recyclerview
+ * - Bottom navigation
+ *      - set up navigation actions between fragments
+ * - categories
+ * - gifs
+ * - favourites
+ */
+
 /**
  * tabs:
  * - favorites
