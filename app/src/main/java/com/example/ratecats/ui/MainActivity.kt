@@ -9,7 +9,10 @@ import com.example.ratecats.R
 
 /** todo:
  * - recyclerview
+ *      - set up the recyclerview and adapter in the view .kt class
  * - basic db queries
+ * - recyclerview item .xml
+ *
  * - Bottom navigation
  *      - set up navigation actions between fragments
  * - Transition animations
@@ -30,6 +33,7 @@ import com.example.ratecats.R
  */
 
 /** Maybe future:
+ * - probably make it a gridlayout manayer
  * - Upload feature and upload tab.
  */
 

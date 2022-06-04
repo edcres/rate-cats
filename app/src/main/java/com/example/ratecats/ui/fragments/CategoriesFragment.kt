@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ratecats.databinding.FragmentCategoriesBinding
+import com.example.ratecats.ui.adapters.CatsListAdapter
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
 class CategoriesFragment : Fragment() {
 
     private var binding: FragmentCategoriesBinding? = null
-    private val catsViewModel: CatsViewModel by activityViewModels()
+    private val catsVm: CatsViewModel by activityViewModels()
+    private lateinit var catsListAdapter: CatsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +24,7 @@ class CategoriesFragment : Fragment() {
         val fragmentBinding =
             FragmentCategoriesBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        catsListAdapter = CatsListAdapter(catsVm)
         return fragmentBinding.root
     }
 
@@ -28,6 +32,8 @@ class CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
+            categoriesCatsRecycler.adapter = catsListAdapter
+            categoriesCatsRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
     }
 
