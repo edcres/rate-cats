@@ -22,7 +22,7 @@ interface CatsApiService {
     suspend fun getPhotos(): List<CatPhoto>
 
     // todo: Maybe the name of the header is related to how the API names their API key header
-    @Headers("APIKey: ${BuildConfig.CATS_API_KEY}")
+//    @Headers("APIKey: ${BuildConfig.CATS_API_KEY}")
     @GET("v1/images/search?limit=100&category_ids=2&mime_types=gif")
     suspend fun getSpaceGifs(
 //        @Header("Authorization") apiKey: String

@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.ratecats.ui.StartFragment"
+        android:name="com.example.ratecats.ui.fragments.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.ratecats.ui.FavoritesFragment"
+        android:name="com.example.ratecats.ui.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.ratecats.ui.CategoriesFragment"
+        android:name="com.example.ratecats.ui.fragments.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/gifsFragment"
-        android:name="com.example.ratecats.ui.GifsFragment"
+        android:name="com.example.ratecats.ui.fragments.GifsFragment"
         android:label="fragment_gifs"
         tools:layout="@layout/fragment_gifs" />
 </navigation>

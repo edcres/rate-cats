@@ -1,21 +1,24 @@
-package com.example.ratecats
+package com.example.ratecats.ui
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import com.example.ratecats.R
 
 /** todo:
- * - launcher icon
- * - dataBinding
  * - recyclerview
  * - basic db queries
  * - Bottom navigation
  *      - set up navigation actions between fragments
+ * - Transition animations
  * - categories
  * - gifs
  * - favourites
+ *
+ * - Like pictures in the API and show which ones are liked
+ * - figure out how to work with the API key (and if I even need it)
  */
 
 /**
