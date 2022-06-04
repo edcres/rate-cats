@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_baseline_bookmark_on_24.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_baseline_thumb_down_off_alt_24.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_bookmark_off_24.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_thumb_down_on_24.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_thumb_up_off_24.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_thumb_up_on_24.xml" value="0.101" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19814814814814816" />
         <entry key="app/src/main/res/layout/cat_photo_item.xml" value="0.2935185185185185" />
         <entry key="app/src/main/res/layout/fragment_categories.xml" value="0.10092592592592593" />

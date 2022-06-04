@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import com.example.ratecats.R
 
 /** todo:
- * - basic db queries
  * - recyclerview item .xml
  * - show the photos in the recyclerview
  *      - write code in the adapter
@@ -34,8 +33,9 @@ import com.example.ratecats.R
  */
 
 /** Maybe future:
- * - probably make it a gridlayout manayer
+ * - probably make it a gridlayout manager.
  * - Upload feature and upload tab.
+ * - animations for the thumb up and thumb down and the others.
  */
 
 class MainActivity : AppCompatActivity() {
