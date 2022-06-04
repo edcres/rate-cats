@@ -18,7 +18,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CatsApiService {
-    @GET("v1/images/search")
+    // todo: possible bug: if the number I request is greater than the number available, only on is given to me
+    //  - more than the list variable can handle, or bc I'm not using the API key
+    //  - probably the API is limiting the query to 100, bc I cant even do 101
+    @GET("v1/images/search?limit=100")
+//    @GET("v1/images/search?mime_types=gif,jpg,png")
     suspend fun getAllPhotos(): List<CatPhoto>
     @GET("v1/images/search?mime_types=gif")
     suspend fun getAllGifs(): List<CatPhoto>

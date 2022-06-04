@@ -3,7 +3,7 @@ package com.example.ratecats.data
 import com.squareup.moshi.Json
 
 data class CatPhoto (
-    @Json(name = "url")
+    @Json(name = "id")
     val id: String,
     @Json(name = "url")
     val imgSrcUrl: String,

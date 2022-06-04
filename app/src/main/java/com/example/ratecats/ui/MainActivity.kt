@@ -8,9 +8,8 @@ import androidx.core.content.ContextCompat
 import com.example.ratecats.R
 
 /** todo:
- * - show the photos in the recyclerview
- *      - write code in the adapter
- *      - submit list in the view
+ * - Debug UI
+ *      - small loading icon
  *
  * - Bottom navigation
  *      - set up navigation actions between fragments
@@ -21,6 +20,8 @@ import com.example.ratecats.R
  *
  * - Like pictures in the API and show which ones are liked
  * - figure out how to work with the API key (and if I even need it)
+ *
+ * - Explore the breed attribute
  */
 
 /**

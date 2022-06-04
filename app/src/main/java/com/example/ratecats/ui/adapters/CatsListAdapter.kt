@@ -57,7 +57,7 @@ class CatsListAdapter(
 
     class CatPhotoDiffCallback : DiffUtil.ItemCallback<CatPhoto>() {
         override fun areItemsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.imgSrcUrl == newItem.imgSrcUrl
         }
         override fun areContentsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
             return oldItem == newItem
