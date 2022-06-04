@@ -35,7 +35,7 @@ class CatsListAdapter(
                     .load(catPhoto.imgSrcUrl.toUri())
                     .apply(
                         RequestOptions()
-                            .placeholder(R.drawable.loading_animation)
+                            .placeholder(R.drawable.loading_anim)
                     )
                     .into(catImg)
                 executePendingBindings()
