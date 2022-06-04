@@ -9,7 +9,7 @@ import com.example.ratecats.R
 
 /** todo:
  * - Debug UI
- *      - small loading icon
+ *      - Pictures to the edge.
  *
  * - Bottom navigation
  *      - set up navigation actions between fragments

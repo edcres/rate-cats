@@ -1,5 +1,6 @@
 package com.example.ratecats.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
@@ -12,6 +13,8 @@ import com.example.ratecats.R
 import com.example.ratecats.data.CatPhoto
 import com.example.ratecats.databinding.CatPhotoItemBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
+
+private const val TAG = "CatsAdapt__TAG"
 
 class CatsListAdapter(
     private val catsViewModel: CatsViewModel
