@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 
 /** todo:
- * - internet permissions
+ * - icon
  * - gradle dependencies (if any)
  * - viewModel
- * - backend
+ * - repo
  * - recyclerview
  * - Bottom navigation
  *      - set up navigation actions between fragments
