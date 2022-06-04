@@ -18,15 +18,10 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CatsApiService {
-    @GET("v1/images/search?limit=10")
-    suspend fun getPhotos(): List<CatPhoto>
-
-    // todo: Maybe the name of the header is related to how the API names their API key header
-//    @Headers("APIKey: ${BuildConfig.CATS_API_KEY}")
-    @GET("v1/images/search?limit=100&category_ids=2&mime_types=gif")
-    suspend fun getSpaceGifs(
-//        @Header("Authorization") apiKey: String
-    ): List<CatPhoto>
+    @GET("v1/images/search")
+    suspend fun getAllPhotos(): List<CatPhoto>
+    @GET("v1/images/search?mime_types=gif")
+    suspend fun getAllGifs(): List<CatPhoto>
 }
 
 object CatsApi {

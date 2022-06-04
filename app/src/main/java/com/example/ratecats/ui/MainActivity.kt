@@ -8,17 +8,18 @@ import androidx.core.content.ContextCompat
 import com.example.ratecats.R
 
 /** todo:
- * - recyclerview
- *      - set up the recyclerview and adapter in the view .kt class
  * - basic db queries
  * - recyclerview item .xml
+ * - show the photos in the recyclerview
+ *      - write code in the adapter
+ *      - submit list in the view
  *
  * - Bottom navigation
  *      - set up navigation actions between fragments
  * - Transition animations
- * - categories
  * - gifs
  * - favourites
+ * - take out the categories view
  *
  * - Like pictures in the API and show which ones are liked
  * - figure out how to work with the API key (and if I even need it)
@@ -27,9 +28,9 @@ import com.example.ratecats.R
 /**
  * tabs:
  * - favorites
- * - categories
  * - gifs
  * - all
+ *      - can filter categories
  */
 
 /** Maybe future:
