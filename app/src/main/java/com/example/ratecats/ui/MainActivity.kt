@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import com.example.ratecats.R
 
 /** todo:
- * - recyclerview item .xml
  * - show the photos in the recyclerview
  *      - write code in the adapter
  *      - submit list in the view
@@ -30,6 +29,11 @@ import com.example.ratecats.R
  * - gifs
  * - all
  *      - can filter categories
+ */
+
+/** todo: possible bugs
+ * If need to resize the image:
+ *  - https://stackoverflow.com/questions/46114603/resize-images-with-glide-in-a-imageview-android
  */
 
 /** Maybe future:

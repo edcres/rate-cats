@@ -2,9 +2,13 @@ package com.example.ratecats.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.ratecats.R
 import com.example.ratecats.data.CatPhoto
 import com.example.ratecats.databinding.CatPhotoItemBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
@@ -22,11 +26,18 @@ class CatsListAdapter(
 
     class CatsViewHolder private constructor(
         private val catsViewModel: CatsViewModel,
-        val binding: CatPhotoItemBinding
+        private val binding: CatPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(catPhoto: CatPhoto) {
             binding.apply {
+                Glide.with(catImg.context)
+                    .load(catPhoto.imgSrcUrl.toUri())
+                    .apply(
+                        RequestOptions()
+                            .placeholder(R.drawable.loading_animation)
+                    )
+                    .into(catImg)
                 executePendingBindings()
             }
         }

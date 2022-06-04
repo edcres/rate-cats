@@ -35,10 +35,17 @@ class StartFragment : Fragment() {
             startCatsRecycler.adapter = catsListAdapter
             startCatsRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
+        setObservers()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    private fun setObservers() {
+        catsVm.photos.observe(viewLifecycleOwner) {
+            catsListAdapter.submitList(it)
+        }
     }
 }
