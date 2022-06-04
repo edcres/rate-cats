@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    // todo: maybe use this to hide the API key
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 

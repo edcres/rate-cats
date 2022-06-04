@@ -8,8 +8,8 @@ import androidx.core.content.ContextCompat
 
 /** todo:
  * - icon
- * - gradle dependencies (if any)
  * - viewModel
+ * - dataBinding
  * - repo
  * - recyclerview
  * - Bottom navigation

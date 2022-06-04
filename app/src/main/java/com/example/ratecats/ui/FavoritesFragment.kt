@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.ratecats.R
+import com.example.ratecats.ui.viewmodels.CatsViewModel
 
 class FavoritesFragment : Fragment() {
+
+    private val catsViewModel: CatsViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
