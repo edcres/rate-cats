@@ -7,17 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.ratecats.R
+import com.example.ratecats.databinding.FragmentCategoriesBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
 class CategoriesFragment : Fragment() {
 
+    private var binding: FragmentCategoriesBinding? = null
     private val catsViewModel: CatsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_categories, container, false)
+        val fragmentBinding =
+            FragmentCategoriesBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        return fragmentBinding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

@@ -7,17 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.ratecats.R
+import com.example.ratecats.databinding.FragmentStartBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
 class StartFragment : Fragment() {
 
+    private var binding: FragmentStartBinding? = null
     private val catsViewModel: CatsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_start, container, false)
+        val fragmentBinding =
+            FragmentStartBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        return fragmentBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,6 +32,6 @@ class StartFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-
+        binding = null
     }
 }

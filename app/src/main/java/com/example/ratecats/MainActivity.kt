@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 
 /** todo:
- * - icon
- * - viewModel
+ * - launcher icon
  * - dataBinding
- * - repo
  * - recyclerview
+ * - basic db queries
  * - Bottom navigation
  *      - set up navigation actions between fragments
  * - categories
