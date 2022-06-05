@@ -9,20 +9,30 @@
         android:id="@+id/startFragment"
         android:name="com.example.ratecats.ui.fragments.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_gifsFragment"
+            app:destination="@id/gifsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.ratecats.ui.fragments.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
-    <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.example.ratecats.ui.fragments.CategoriesFragment"
-        android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gifsFragment"
         android:name="com.example.ratecats.ui.fragments.GifsFragment"
         android:label="fragment_gifs"
-        tools:layout="@layout/fragment_gifs" />
+        tools:layout="@layout/fragment_gifs" >
+        <action
+            android:id="@+id/action_gifsFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
 </navigation>
