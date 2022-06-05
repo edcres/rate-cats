@@ -43,6 +43,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * - probably make it a gridlayout manager.
  * - Upload feature and upload tab.
  * - animations for the thumb up and thumb down and the others.
+ * - Make the images align better. Have a linear layout instead of the constraint layout,
+ *      - and have a constraint layout for the imgBtns
  */
 
 private const val TAG = "MainAct__TAG"
