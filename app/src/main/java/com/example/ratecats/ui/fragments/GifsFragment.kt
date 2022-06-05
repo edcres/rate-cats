@@ -49,7 +49,7 @@ class GifsFragment : Fragment() {
     private fun setObservers() {
         catsVm.allGifs.observe(viewLifecycleOwner) {
             catsListAdapter.submitList(it)
-            Log.d(TAG, "setObservers: ${it.size}")
+            Log.d(TAG, "gifs: ${it.size}")
         }
     }
 }

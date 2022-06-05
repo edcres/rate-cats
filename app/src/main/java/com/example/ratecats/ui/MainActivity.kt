@@ -13,14 +13,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 /** todo:
- * - gifs
  * - favourites
- * - take out the categories view
+ *      - GET my favorites
+ *      - POST new favorites
+ *      - DELETE old favorites
+ *
+ *      - send different 'sub_id' to the API query
+ *
+ * - exclude gifs from categories queries
+ *
+ * - have categories filter for all and gifs
  *
  * - Like pictures in the API and show which ones are liked
  * - figure out how to work with the API key (and if I even need it)
  *
  * - filter categories in the all view
+ *
+ * - check each item in the ViewHolder to see if it is favorites
+ * - check each item in the ViewHolder to see if it is liked
  *
  * - Explore the breed attribute
  */
@@ -29,6 +39,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * tabs:
  * - favorites
  * - gifs
+ *      - can filter categories
  * - all
  *      - can filter categories
  */
@@ -68,26 +79,5 @@ class MainActivity : AppCompatActivity() {
         if (navHostFragment != null) {
             NavigationUI.setupWithNavController(bottomNavBar, navHostFragment!!.navController)
         } else Log.e(TAG, "onCreate: navHostFragment is null")
-
-
-//        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-//
-//        bottomNavBar.setOnItemSelectedListener {
-//            when(it.itemId) {
-//                R.id.gifs_btn -> {
-//                    navController.navigate(R.id.action_categoriesFragment_to_gifsFragment)
-//                    return@setOnItemSelectedListener true
-//                }
-//                R.id.categories_btn -> {
-//                    navController.navigate(R.id.action_favoritesFragment_to_categoriesFragment)
-//                    return@setOnItemSelectedListener true
-//                }
-//                R.id.favorites_btn -> {
-//                    navController.navigate(R.id.action_categoriesFragment_to_favoritesFragment)
-//                    return@setOnItemSelectedListener true
-//                }
-//            }
-//            false
-//        }
     }
 }

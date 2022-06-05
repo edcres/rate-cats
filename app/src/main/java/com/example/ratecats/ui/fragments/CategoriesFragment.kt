@@ -49,7 +49,7 @@ class CategoriesFragment : Fragment() {
     private fun setObservers() {
         catsVm.photos.observe(viewLifecycleOwner) {
             catsListAdapter.submitList(it)
-            Log.d(TAG, "setObservers: ${it.size}")
+            Log.d(TAG, "Categories: ${it.size}")
         }
     }
 }
