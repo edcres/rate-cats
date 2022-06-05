@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import com.example.ratecats.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
- * - Bottom navigation
- *      - set up navigation actions between fragments
- * - Transition animations
  * - gifs
  * - favourites
  * - take out the categories view
@@ -37,18 +36,42 @@ import com.example.ratecats.R
  */
 
 /** Maybe future:
+ * - View transition animations
  * - probably make it a gridlayout manager.
  * - Upload feature and upload tab.
  * - animations for the thumb up and thumb down and the others.
  */
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var bottomNavBar: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
+        }
+        // Bottom navigation
+        bottomNavBar = findViewById(R.id.bottom_nav)
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        bottomNavBar.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.gifs_btn -> {
+                    navController.navigate(R.id.action_startFragment_to_gifsFragment)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.categories_btn -> {
+                    navController.navigate(R.id.action_favoritesFragment_to_startFragment)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.favorites_btn -> {
+                    navController.navigate(R.id.action_startFragment_to_favoritesFragment)
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
         }
     }
 }
