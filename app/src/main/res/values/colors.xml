@@ -11,4 +11,6 @@
     <color name="background">#A69CC1</color>
     <color name="card_view">#DED2FA</color>
     <color name="main_dark">#746A8C</color>
+    <color name="bottom_bar">#8C78BA</color>
+    <color name="img_background">#655C78</color>
 </resources>

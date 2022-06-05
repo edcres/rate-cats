@@ -18,6 +18,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitStart"
+                    android:background="@color/img_background"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toStartOf="@+id/like_img_btn"
                     app:layout_constraintStart_toStartOf="parent"
