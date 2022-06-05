@@ -8,9 +8,6 @@ import androidx.core.content.ContextCompat
 import com.example.ratecats.R
 
 /** todo:
- * - Debug UI
- *      - Pictures to the edge.
- *
  * - Bottom navigation
  *      - set up navigation actions between fragments
  * - Transition animations
@@ -20,6 +17,8 @@ import com.example.ratecats.R
  *
  * - Like pictures in the API and show which ones are liked
  * - figure out how to work with the API key (and if I even need it)
+ *
+ * - filter categories in the all view
  *
  * - Explore the breed attribute
  */
