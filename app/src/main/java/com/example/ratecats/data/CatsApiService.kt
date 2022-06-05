@@ -24,7 +24,7 @@ interface CatsApiService {
     @GET("v1/images/search?limit=100")
 //    @GET("v1/images/search?mime_types=gif,jpg,png")
     suspend fun getAllPhotos(): List<CatPhoto>
-    @GET("v1/images/search?mime_types=gif")
+    @GET("v1/images/search?mime_types=gif&limit=100")
     suspend fun getAllGifs(): List<CatPhoto>
 }
 

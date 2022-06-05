@@ -12,7 +12,7 @@ import com.example.ratecats.databinding.FragmentCategoriesBinding
 import com.example.ratecats.ui.adapters.CatsListAdapter
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
-private const val TAG = "Start__TAG"
+private const val TAG = "Categories__TAG"
 
 class CategoriesFragment : Fragment() {
 
