@@ -21,6 +21,7 @@ class CatsViewModel: ViewModel() {
     init {
         getAllPhotos()
         getAllGifs()
+        getAllMyFavorites()
     }
 
     // DATABASE QUERIES //
@@ -28,5 +29,6 @@ class CatsViewModel: ViewModel() {
     fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
     fun getAllMyFavorites() =
         viewModelScope.launch { _allMyFavorites.postValue(repo.getMyFavorites()) }
+    fun addFavorite(favoriteId: String) = viewModelScope.launch { repo.addFavorite(favoriteId) }
     // DATABASE QUERIES //
 }

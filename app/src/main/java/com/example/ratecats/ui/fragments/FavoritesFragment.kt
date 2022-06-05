@@ -47,7 +47,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun setObservers() {
-        catsVm.photos.observe(viewLifecycleOwner) {
+        catsVm.allMyFavorites.observe(viewLifecycleOwner) {
             catsListAdapter.submitList(it)
             Log.d(TAG, "favorites: ${it.size}")
         }

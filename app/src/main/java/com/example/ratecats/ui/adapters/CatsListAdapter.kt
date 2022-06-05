@@ -1,6 +1,5 @@
 package com.example.ratecats.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
@@ -17,18 +16,18 @@ import com.example.ratecats.ui.viewmodels.CatsViewModel
 private const val TAG = "CatsAdapt__TAG"
 
 class CatsListAdapter(
-    private val catsViewModel: CatsViewModel
+    private val catsVm: CatsViewModel
     ) : ListAdapter<CatPhoto, CatsListAdapter.CatsViewHolder>(CatPhotoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatsViewHolder {
-        return CatsViewHolder.from(catsViewModel, parent)
+        return CatsViewHolder.from(catsVm, parent)
     }
 
     override fun onBindViewHolder(holder: CatsViewHolder, position: Int) =
         holder.bind(getItem(position))
 
     class CatsViewHolder private constructor(
-        private val catsViewModel: CatsViewModel,
+        private val catsVm: CatsViewModel,
         private val binding: CatPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -42,18 +41,24 @@ class CatsListAdapter(
                     )
                     .into(catImg)
                 executePendingBindings()
+                favoriteImgBtn.setOnClickListener {
+                    // todo: change the image to on (or off and undo favorite)
+                    //  check if imgBtn is on or off
+                    catsVm.addFavorite(catPhoto.id)
+                    catsVm.getAllMyFavorites()
+                }
             }
         }
 
         companion object {
             fun from(
-                catsViewModel: CatsViewModel,
+                catsVm: CatsViewModel,
                 parent: ViewGroup
             ): CatsViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = CatPhotoItemBinding
                     .inflate(layoutInflater, parent, false)
-                return CatsViewHolder(catsViewModel, binding)
+                return CatsViewHolder(catsVm, binding)
             }
         }
     }

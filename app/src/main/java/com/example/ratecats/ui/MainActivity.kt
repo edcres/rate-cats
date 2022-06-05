@@ -11,11 +11,10 @@ import androidx.navigation.ui.NavigationUI
 import com.example.ratecats.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 /** todo:
  * - favourites
- *      - GET my favorites
  *      - POST new favorites
+ *      - Test GET and POST
  *      - DELETE old favorites
  *
  *      - send different 'sub_id' to the API query
@@ -56,6 +55,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * - animations for the thumb up and thumb down and the others.
  * - Make the images align better. Have a linear layout instead of the constraint layout,
  *      - and have a constraint layout for the imgBtns
+ * - Use different sub_ids for different users.
  */
 
 private const val TAG = "MainAct__TAG"
