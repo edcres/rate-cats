@@ -53,25 +53,5 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
         }
-        // Bottom navigation
-        bottomNavBar = findViewById(R.id.bottom_nav)
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        bottomNavBar.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.gifs_btn -> {
-                    navController.navigate(R.id.action_categoriesFragment_to_gifsFragment)
-                    return@setOnItemSelectedListener true
-                }
-                R.id.categories_btn -> {
-                    navController.navigate(R.id.action_favoritesFragment_to_categoriesFragment)
-                    return@setOnItemSelectedListener true
-                }
-                R.id.favorites_btn -> {
-                    navController.navigate(R.id.action_categoriesFragment_to_favoritesFragment)
-                    return@setOnItemSelectedListener true
-                }
-            }
-            false
-        }
     }
 }
