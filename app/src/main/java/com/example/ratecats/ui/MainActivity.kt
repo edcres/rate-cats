@@ -59,15 +59,15 @@ class MainActivity : AppCompatActivity() {
         bottomNavBar.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.gifs_btn -> {
-                    navController.navigate(R.id.action_startFragment_to_gifsFragment)
+                    navController.navigate(R.id.action_categoriesFragment_to_gifsFragment)
                     return@setOnItemSelectedListener true
                 }
                 R.id.categories_btn -> {
-                    navController.navigate(R.id.action_favoritesFragment_to_startFragment)
+                    navController.navigate(R.id.action_favoritesFragment_to_categoriesFragment)
                     return@setOnItemSelectedListener true
                 }
                 R.id.favorites_btn -> {
-                    navController.navigate(R.id.action_startFragment_to_favoritesFragment)
+                    navController.navigate(R.id.action_categoriesFragment_to_favoritesFragment)
                     return@setOnItemSelectedListener true
                 }
             }

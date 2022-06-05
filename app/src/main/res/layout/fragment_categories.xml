@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragments.StartFragment">
+    tools:context=".ui.fragments.CategoriesFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -9,7 +9,7 @@
         android:background="@color/background">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/start_cats_recycler"
+            android:id="@+id/categories_cats_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/cat_photo_item"/>
