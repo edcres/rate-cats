@@ -3,36 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/categoriesFragment">
+    app:startDestination="@id/categories">
 
+<!--    NOTE: the ids if these fragments need to match the ids of the bottom nav bar btns-->
     <fragment
-        android:id="@+id/categoriesFragment"
+        android:id="@+id/categories"
         android:name="com.example.ratecats.ui.fragments.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" >
         <action
             android:id="@+id/action_categoriesFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
+            app:destination="@id/favorites" />
         <action
             android:id="@+id/action_categoriesFragment_to_gifsFragment"
-            app:destination="@id/gifsFragment" />
+            app:destination="@id/gifs" />
     </fragment>
     <fragment
-        android:id="@+id/favoritesFragment"
+        android:id="@+id/favorites"
         android:name="com.example.ratecats.ui.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/action_favoritesFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
+            app:destination="@id/categories" />
     </fragment>
     <fragment
-        android:id="@+id/gifsFragment"
+        android:id="@+id/gifs"
         android:name="com.example.ratecats.ui.fragments.GifsFragment"
         android:label="fragment_gifs"
         tools:layout="@layout/fragment_gifs" >
         <action
             android:id="@+id/action_gifsFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
+            app:destination="@id/categories" />
     </fragment>
 </navigation>
