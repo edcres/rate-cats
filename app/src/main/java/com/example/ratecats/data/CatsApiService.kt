@@ -25,16 +25,24 @@ private val retrofit = Retrofit.Builder()
 interface CatsApiService {
     @GET("$API_V/images/search?limit=100")
     suspend fun getAllPhotos(): List<CatPhoto>
-    @GET("$API_V/images/search?mime_types=gif&limit=99")
+    @GET("$API_V/images/search?mime_types=gif&limit=100")
     suspend fun getAllGifs(): List<CatPhoto>
 
     // Favorites
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
-    @GET("$API_V/favourites?sub_id=$SUB_ID&limit=100")
-    suspend fun getMyFavorites(): List<CatPhoto>
-//    @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
-    @POST("$API_V/favourites?sub_id=$SUB_ID")
-    suspend fun addFavorite(@Query("image_id") imgID: String)
+    @GET("$API_V/favourites?limit=100")
+    suspend fun getMyFavorites(
+        @Query("sub_id") subId: String = SUB_ID
+    ): List<CatPhoto>
+    @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
+//    @POST("$API_V/favourites?sub_id=$SUB_ID")
+//    suspend fun addFavorite(
+//        @Query("image_id") imgID: String
+//    )
+    @POST("$API_V/favourites?sub_id=$SUB_ID&image_id=241")
+    suspend fun addFavorite(
+//       imgID: String
+    )
 }
 
 object CatsApi {

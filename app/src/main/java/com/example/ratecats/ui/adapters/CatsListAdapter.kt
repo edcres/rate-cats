@@ -1,5 +1,6 @@
 package com.example.ratecats.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
@@ -45,7 +46,8 @@ class CatsListAdapter(
                     // todo: change the image to on (or off and undo favorite)
                     //  check if imgBtn is on or off
                     catsVm.addFavorite(catPhoto.id)
-                    catsVm.getAllMyFavorites()
+//                    catsVm.getAllMyFavorites()
+                    Log.d(TAG, "id sent: ${catPhoto.id}")
                 }
             }
         }
