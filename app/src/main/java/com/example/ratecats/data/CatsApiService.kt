@@ -41,6 +41,10 @@ interface CatsApiService {
        @Body image_id: String,
        @Body sub_id: String = SUB_ID
     )
+    @DELETE("$API_V/favourites")
+    suspend fun removeFavorite(
+        @Query ("favourite_id")image_id: String,
+    )
 }
 
 object CatsApi {

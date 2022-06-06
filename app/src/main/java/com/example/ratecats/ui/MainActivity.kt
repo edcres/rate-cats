@@ -12,10 +12,8 @@ import com.example.ratecats.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
- * - learn about http body
- *      - also learn it with retrofit
  * - favourites
- *      - POST new favorites
+ *      - POST add favorite (test)
  *      - Test GET and POST
  *      - DELETE old favorites
  *

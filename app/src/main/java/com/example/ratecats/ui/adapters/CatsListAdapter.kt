@@ -48,6 +48,9 @@ class CatsListAdapter(
                     catsVm.addFavorite(catPhoto.id)
 //                    catsVm.getAllMyFavorites()
                     Log.d(TAG, "id sent: ${catPhoto.id}")
+
+                    // todo: remove favorite when appropriate
+//                    catsVm.removeFavorite(catPhoto.id)
                 }
             }
         }

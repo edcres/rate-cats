@@ -30,5 +30,6 @@ class CatsViewModel: ViewModel() {
     fun getAllMyFavorites() =
         viewModelScope.launch { _allMyFavorites.postValue(repo.getMyFavorites()) }
     fun addFavorite(favoriteId: String) = viewModelScope.launch { repo.addFavorite(favoriteId) }
+    fun removeFavorite(favoriteId: String) = viewModelScope.launch { repo.removeFavorite(favoriteId) }
     // DATABASE QUERIES //
 }
