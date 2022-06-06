@@ -5,10 +5,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 private const val BASE_URL = "https://api.thecatapi.com"
 private const val API_V = "v1"
@@ -39,9 +36,10 @@ interface CatsApiService {
 //    suspend fun addFavorite(
 //        @Query("image_id") imgID: String
 //    )
-    @POST("$API_V/favourites?sub_id=$SUB_ID&image_id=241")
+    @POST("$API_V/favourites?limit=100")
     suspend fun addFavorite(
-//       imgID: String
+       @Body image_id: String,
+       @Body sub_id: String = SUB_ID
     )
 }
 
