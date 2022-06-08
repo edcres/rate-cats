@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.ratecats.R
-import com.example.ratecats.data.CatPhoto
+import com.example.ratecats.data.catsapi.CatPhoto
 import com.example.ratecats.databinding.CatPhotoItemBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 

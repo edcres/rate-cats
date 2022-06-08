@@ -1,12 +1,15 @@
 package com.example.ratecats.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ratecats.data.CatPhoto
+import com.example.ratecats.data.catsapi.CatPhoto
 import com.example.ratecats.data.CatsRepository
 import kotlinx.coroutines.launch
+
+private const val TAG = "SharedVM__TAG"
 
 class CatsViewModel: ViewModel() {
 
@@ -15,25 +18,33 @@ class CatsViewModel: ViewModel() {
     val photos: LiveData<List<CatPhoto>> = _allPhotos
     private val _allGifs = MutableLiveData<List<CatPhoto>>()
     val allGifs: LiveData<List<CatPhoto>> = _allGifs
-    private val _allMyFavorites = MutableLiveData<List<CatPhoto>>()
-    val allMyFavorites: LiveData<List<CatPhoto>> = _allMyFavorites
-
-    
+    private val _savedFavourites = MutableLiveData<List<CatPhoto>>()
+    val savedFavourites: LiveData<List<CatPhoto>> = _savedFavourites
+    // Can use this to check if the Web API and Room match
+//    private val _myFavoritesFromAPI = MutableLiveData<List<CatPhoto>>(); val myFavoritesFromAPI: LiveData<List<CatPhoto>> = _myFavoritesFromAPI
 
     init {
-//        getAllPhotos()
-//        getAllGifs()
-        getAllMyFavorites()
+        getAllPhotos()
+        getAllGifs()
+        getSavedFavourites()
+        getFavoritesFromAPI()
     }
 
     // DATABASE QUERIES //
-    fun getAllPhotos() = viewModelScope.launch { _allPhotos.postValue(repo.getAllPhotos()) }
-    fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
-    fun getAllMyFavorites() =
-        viewModelScope.launch {
-            _allMyFavorites.postValue(repo.getMyFavorites())
-        }
-    fun addFavorite(imgId: String, imgUrl: String) = viewModelScope.launch { repo.addFavorite(imgId, imgUrl) }
-    fun removeFavorite(favoriteId: String) = viewModelScope.launch { repo.removeFavorite(favoriteId) }
+    private fun getAllPhotos() = viewModelScope.launch { _allPhotos.postValue(repo.getAllPhotos()) }
+    private fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
+    private fun getFavoritesFromAPI() = viewModelScope.launch {
+//        _myFavoritesFromAPI.postValue(repo.getMyFavorites())
+        Log.i(TAG, "getFavoritesFromAPI: favourites size = ${repo.getMyFavorites().size}")
+    }
+    private fun getSavedFavourites() = viewModelScope.launch { _savedFavourites.postValue(repo.) }
+    fun addFavorite(imgId: String, imgUrl: String) = viewModelScope.launch {
+        repo.addFavorite(imgId, imgUrl)
+        // todo: add it to Room
+    }
+    fun removeFavorite(favoriteId: String) = viewModelScope.launch {
+        repo.removeFavorite(favoriteId)
+        // todo: remove it from Room
+    }
     // DATABASE QUERIES //
 }

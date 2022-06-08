@@ -1,6 +1,4 @@
-package com.example.ratecats.data
-
-import com.squareup.moshi.Json
+package com.example.ratecats.data.catsapi
 
 data class FavouriteImage (
     val image_id: String,

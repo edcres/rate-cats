@@ -1,4 +1,4 @@
-package com.example.ratecats.data
+package com.example.ratecats.data.catsapi
 
 import com.squareup.moshi.Json
 

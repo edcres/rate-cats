@@ -1,9 +1,9 @@
 package com.example.ratecats.data
 
 import android.util.Log
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.ratecats.data.catsapi.CatPhoto
+import com.example.ratecats.data.catsapi.CatsApi
+import com.example.ratecats.data.catsapi.FavouriteImage
 
 private const val TAG = "Repo__TAG"
 private const val SUB_ID = "00005"
