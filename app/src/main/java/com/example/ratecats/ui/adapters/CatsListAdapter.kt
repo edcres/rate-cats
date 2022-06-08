@@ -45,7 +45,7 @@ class CatsListAdapter(
                 favoriteImgBtn.setOnClickListener {
                     // todo: change the image to on (or off and undo favorite)
                     //  check if imgBtn is on or off
-                    catsVm.addFavorite(catPhoto.id)
+                    catsVm.addFavorite(catPhoto.id, catPhoto.imgSrcUrl)
 //                    catsVm.getAllMyFavorites()
                     Log.d(TAG, "id sent: ${catPhoto.id}")
 

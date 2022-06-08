@@ -29,7 +29,7 @@ class CatsViewModel: ViewModel() {
     fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
     fun getAllMyFavorites() =
         viewModelScope.launch { _allMyFavorites.postValue(repo.getMyFavorites()) }
-    fun addFavorite(favoriteId: String) = viewModelScope.launch { repo.addFavorite(favoriteId) }
+    fun addFavorite(imgId: String, imgUrl: String) = viewModelScope.launch { repo.addFavorite(imgId, imgUrl) }
     fun removeFavorite(favoriteId: String) = viewModelScope.launch { repo.removeFavorite(favoriteId) }
     // DATABASE QUERIES //
 }

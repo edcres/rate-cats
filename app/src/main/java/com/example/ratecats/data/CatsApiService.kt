@@ -10,7 +10,6 @@ import retrofit2.http.*
 private const val BASE_URL = "https://api.thecatapi.com"
 private const val API_V = "v1"
 private const val API_KEY_VAR = "x-api-key"
-private const val SUB_ID = "00001"
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -29,7 +28,7 @@ interface CatsApiService {
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
     @GET("$API_V/favourites?limit=100")
     suspend fun getMyFavorites(
-        @Query("sub_id") subId: String = SUB_ID
+        @Query("sub_id") subId: String
     ): List<CatPhoto>
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
 //    @POST("$API_V/favourites?sub_id=$SUB_ID")
@@ -38,8 +37,7 @@ interface CatsApiService {
 //    )
     @POST("$API_V/favourites?limit=100")
     suspend fun addFavorite(
-       @Body image_id: String,
-       @Body sub_id: String = SUB_ID
+       @Body favouriteImage: FavouriteImage
     )
     @DELETE("$API_V/favourites")
     suspend fun removeFavorite(

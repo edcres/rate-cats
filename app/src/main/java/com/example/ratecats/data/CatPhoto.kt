@@ -13,5 +13,5 @@ data class CatPhoto (
     @Json(name = "width")
     val width: Int,
     @Json(name = "height")
-    val height: Int,
+    val height: Int
 )
