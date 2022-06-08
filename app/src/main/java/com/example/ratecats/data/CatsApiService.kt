@@ -3,6 +3,10 @@ package com.example.ratecats.data
 import com.example.ratecats.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
@@ -13,9 +17,18 @@ private const val API_KEY_VAR = "x-api-key"
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
+// http interceptor for logging
+private val interceptor = HttpLoggingInterceptor().apply {
+    level = HttpLoggingInterceptor.Level.BODY
+}
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
+    .client(
+        OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+    )
     .build()
 
 interface CatsApiService {
@@ -29,7 +42,7 @@ interface CatsApiService {
     @GET("$API_V/favourites?limit=100")
     suspend fun getMyFavorites(
         @Query("sub_id") subId: String
-    ): List<CatPhoto>
+    ): Response<List<FavouriteImage>>
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
 //    @POST("$API_V/favourites?sub_id=$SUB_ID")
 //    suspend fun addFavorite(
@@ -38,7 +51,7 @@ interface CatsApiService {
     @POST("$API_V/favourites?limit=100")
     suspend fun addFavorite(
        @Body favouriteImage: FavouriteImage
-    )
+    ): Response<String>
     @DELETE("$API_V/favourites")
     suspend fun removeFavorite(
         @Query ("favourite_id")image_id: String,

@@ -18,9 +18,11 @@ class CatsViewModel: ViewModel() {
     private val _allMyFavorites = MutableLiveData<List<CatPhoto>>()
     val allMyFavorites: LiveData<List<CatPhoto>> = _allMyFavorites
 
+    
+
     init {
-        getAllPhotos()
-        getAllGifs()
+//        getAllPhotos()
+//        getAllGifs()
         getAllMyFavorites()
     }
 
@@ -28,7 +30,9 @@ class CatsViewModel: ViewModel() {
     fun getAllPhotos() = viewModelScope.launch { _allPhotos.postValue(repo.getAllPhotos()) }
     fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
     fun getAllMyFavorites() =
-        viewModelScope.launch { _allMyFavorites.postValue(repo.getMyFavorites()) }
+        viewModelScope.launch {
+            _allMyFavorites.postValue(repo.getMyFavorites())
+        }
     fun addFavorite(imgId: String, imgUrl: String) = viewModelScope.launch { repo.addFavorite(imgId, imgUrl) }
     fun removeFavorite(favoriteId: String) = viewModelScope.launch { repo.removeFavorite(favoriteId) }
     // DATABASE QUERIES //
