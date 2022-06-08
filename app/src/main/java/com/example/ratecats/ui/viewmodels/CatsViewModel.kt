@@ -1,5 +1,6 @@
 package com.example.ratecats.ui.viewmodels
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,14 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ratecats.data.catsapi.CatPhoto
 import com.example.ratecats.data.CatsRepository
+import com.example.ratecats.data.room.CatsRoomDatabase
 import com.example.ratecats.data.room.LocalFavoritedImg
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 private const val TAG = "SharedVM__TAG"
 
 class CatsViewModel: ViewModel() {
 
-    private val repo = CatsRepository()
+    private lateinit var roomDb: CatsRoomDatabase
+    private lateinit var repo: CatsRepository
     private val _allPhotos = MutableLiveData<List<CatPhoto>>()
     val photos: LiveData<List<CatPhoto>> = _allPhotos
     private val _allGifs = MutableLiveData<List<CatPhoto>>()
@@ -25,9 +29,16 @@ class CatsViewModel: ViewModel() {
     init {
         getAllPhotos()
         getAllGifs()
-        getSavedFavourites()
         getFavoritesFromAPI()
     }
+
+    // SETUP //
+    fun setupLocalBackend(application: Application) {
+        roomDb = CatsRoomDatabase.getInstance(application)
+        repo = CatsRepository(roomDb)
+        getSavedFavourites()
+    }
+    // SETUP //
 
     // DATABASE QUERIES //
     private fun getAllPhotos() = viewModelScope.launch { _allPhotos.postValue(repo.getAllPhotos()) }
@@ -36,7 +47,9 @@ class CatsViewModel: ViewModel() {
         // Can use this to check if the Web API and Room match
         Log.i(TAG, "getFavoritesFromAPI: favourites size = ${repo.getFavoritesFromAPI().size}")
     }
-    private fun getSavedFavourites() = viewModelScope.launch { _savedFavourites.postValue(repo.getSavedPhotos()) }
+    private fun getSavedFavourites() = viewModelScope.launch {
+        repo.getSavedPhotos().collect { _savedFavourites.postValue(it) }
+    }
     fun addFavorite(imgId: String) = viewModelScope.launch {
         repo.addFavorite(imgId)
         // todo: add it to Room

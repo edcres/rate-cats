@@ -18,7 +18,7 @@ class FavoritesFragment : Fragment() {
 
     private var binding: FragmentFavoritesBinding? = null
     private val catsVm: CatsViewModel by activityViewModels()
-    private lateinit var catsListAdapter: CatsListAdapter
+    private lateinit var catFavsListAdapter: ;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment() {
         val fragmentBinding =
             FragmentFavoritesBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        catsListAdapter = CatsListAdapter(catsVm)
+        catFavsListAdapter = (catsVm)
         return fragmentBinding.root
     }
 
@@ -35,7 +35,7 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
-            favoritesCatsRecycler.adapter = catsListAdapter
+            favoritesCatsRecycler.adapter = catFavsListAdapter
             favoritesCatsRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
         setObservers()
@@ -48,7 +48,7 @@ class FavoritesFragment : Fragment() {
 
     private fun setObservers() {
         catsVm.savedFavourites.observe(viewLifecycleOwner) {
-            catsListAdapter.submitList(it)
+            catFavsListAdapter.submitList(it)
             Log.d(TAG, "favorites: ${it.size}")
         }
     }

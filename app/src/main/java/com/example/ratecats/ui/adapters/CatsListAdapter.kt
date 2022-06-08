@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.ratecats.R
 import com.example.ratecats.data.catsapi.CatPhoto
-import com.example.ratecats.data.room.LocalFavoritedImg
 import com.example.ratecats.databinding.CatPhotoItemBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
@@ -19,7 +18,7 @@ private const val TAG = "CatsAdapt__TAG"
 
 class CatsListAdapter(
     private val catsVm: CatsViewModel
-    ) : ListAdapter<LocalFavoritedImg, CatsListAdapter.CatsViewHolder>(CatPhotoDiffCallback()) {
+    ) : ListAdapter<CatPhoto, CatsListAdapter.CatsViewHolder>(CatPhotoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatsViewHolder {
         return CatsViewHolder.from(catsVm, parent)
@@ -33,10 +32,10 @@ class CatsListAdapter(
         private val binding: CatPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(catPhoto: LocalFavoritedImg) {
+        fun bind(catPhoto: CatPhoto) {
             binding.apply {
                 Glide.with(catImg.context)
-                    .load(catPhoto.imgUrl.toUri())
+                    .load(catPhoto.imgSrcUrl.toUri())
                     .apply(
                         RequestOptions()
                             .placeholder(R.drawable.loading_anim)
@@ -46,9 +45,9 @@ class CatsListAdapter(
                 favoriteImgBtn.setOnClickListener {
                     // todo: change the image to on (or off and undo favorite)
                     //  check if imgBtn is on or off
-                    catsVm.addFavorite(catPhoto.imgId)
+                    catsVm.addFavorite(catPhoto.id)
 //                    catsVm.getAllMyFavorites()
-                    Log.d(TAG, "id sent: ${catPhoto.imgId}")
+                    Log.d(TAG, "id sent: ${catPhoto.id}")
 
                     // todo: remove favorite when appropriate
 //                    catsVm.removeFavorite(catPhoto.id)
@@ -69,11 +68,11 @@ class CatsListAdapter(
         }
     }
 
-    class CatPhotoDiffCallback : DiffUtil.ItemCallback<LocalFavoritedImg>() {
-        override fun areItemsTheSame(oldItem: LocalFavoritedImg, newItem: LocalFavoritedImg): Boolean {
-            return oldItem.imgId == newItem.imgId
+    class CatPhotoDiffCallback : DiffUtil.ItemCallback<CatPhoto>() {
+        override fun areItemsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
+            return oldItem.id == newItem.id
         }
-        override fun areContentsTheSame(oldItem: LocalFavoritedImg, newItem: LocalFavoritedImg): Boolean {
+        override fun areContentsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
             return oldItem == newItem
         }
     }
