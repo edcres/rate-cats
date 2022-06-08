@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -40,6 +41,7 @@ dependencies {
     def moshi = '1.9.3'
     def glide = '4.13.0'
     def okhttp3 = '4.9.0'
+    def roomVersion = '2.3.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.1'
@@ -57,6 +59,10 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$moshi"
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide"
+    // Room components
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
     // for debugging
     implementation "com.squareup.okhttp3:okhttp:$okhttp3"

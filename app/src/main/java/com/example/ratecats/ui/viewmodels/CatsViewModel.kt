@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ratecats.data.catsapi.CatPhoto
 import com.example.ratecats.data.CatsRepository
+import com.example.ratecats.data.room.LocalFavoritedImg
 import kotlinx.coroutines.launch
 
 private const val TAG = "SharedVM__TAG"
@@ -18,8 +19,8 @@ class CatsViewModel: ViewModel() {
     val photos: LiveData<List<CatPhoto>> = _allPhotos
     private val _allGifs = MutableLiveData<List<CatPhoto>>()
     val allGifs: LiveData<List<CatPhoto>> = _allGifs
-    private val _savedFavourites = MutableLiveData<List<CatPhoto>>()
-    val savedFavourites: LiveData<List<CatPhoto>> = _savedFavourites
+    private val _savedFavourites = MutableLiveData<List<LocalFavoritedImg>>()
+    val savedFavourites: LiveData<List<LocalFavoritedImg>> = _savedFavourites
 
     init {
         getAllPhotos()
@@ -35,7 +36,7 @@ class CatsViewModel: ViewModel() {
         // Can use this to check if the Web API and Room match
         Log.i(TAG, "getFavoritesFromAPI: favourites size = ${repo.getFavoritesFromAPI().size}")
     }
-    private fun getSavedFavourites() = viewModelScope.launch { _savedFavourites.postValue(repo.) }
+    private fun getSavedFavourites() = viewModelScope.launch { _savedFavourites.postValue(repo.getSavedPhotos()) }
     fun addFavorite(imgId: String) = viewModelScope.launch {
         repo.addFavorite(imgId)
         // todo: add it to Room
