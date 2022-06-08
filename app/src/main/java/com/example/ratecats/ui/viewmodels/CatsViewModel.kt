@@ -20,8 +20,6 @@ class CatsViewModel: ViewModel() {
     val allGifs: LiveData<List<CatPhoto>> = _allGifs
     private val _savedFavourites = MutableLiveData<List<CatPhoto>>()
     val savedFavourites: LiveData<List<CatPhoto>> = _savedFavourites
-    // Can use this to check if the Web API and Room match
-//    private val _myFavoritesFromAPI = MutableLiveData<List<CatPhoto>>(); val myFavoritesFromAPI: LiveData<List<CatPhoto>> = _myFavoritesFromAPI
 
     init {
         getAllPhotos()
@@ -34,12 +32,12 @@ class CatsViewModel: ViewModel() {
     private fun getAllPhotos() = viewModelScope.launch { _allPhotos.postValue(repo.getAllPhotos()) }
     private fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
     private fun getFavoritesFromAPI() = viewModelScope.launch {
-//        _myFavoritesFromAPI.postValue(repo.getMyFavorites())
-        Log.i(TAG, "getFavoritesFromAPI: favourites size = ${repo.getMyFavorites().size}")
+        // Can use this to check if the Web API and Room match
+        Log.i(TAG, "getFavoritesFromAPI: favourites size = ${repo.getFavoritesFromAPI().size}")
     }
     private fun getSavedFavourites() = viewModelScope.launch { _savedFavourites.postValue(repo.) }
-    fun addFavorite(imgId: String, imgUrl: String) = viewModelScope.launch {
-        repo.addFavorite(imgId, imgUrl)
+    fun addFavorite(imgId: String) = viewModelScope.launch {
+        repo.addFavorite(imgId)
         // todo: add it to Room
     }
     fun removeFavorite(favoriteId: String) = viewModelScope.launch {
