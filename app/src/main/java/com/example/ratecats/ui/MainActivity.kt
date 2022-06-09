@@ -16,39 +16,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  *      - DELETE old favorites
  *      - send different 'sub_id' to the API query
  *
- * - exclude gifs from categories queries
- *
- * - have categories filter for all and gifs
- *
- * - Like pictures in the API and show which ones are liked
- * - figure out how to work with the API key (and if I even need it)
- *
- * - filter categories in the all view
- *
- * - check each item in the ViewHolder to see if it is favorites
+ * - check each item in the ViewHolder to see if it is favorited
+ *          - check the map in the viewModel with .contains(key)
  *
  * - Improve the look of the cardView
  *
  * - Explore the breed attribute
  */
 
-/**
- * tabs:
- * - favorites
- * - gifs
- *      - can filter categories
- * - all
- *      - can filter categories
- */
-
-/** todo: possible bugs
+/** todo: bugs
  * If need to resize the image:
  *  - https://stackoverflow.com/questions/46114603/resize-images-with-glide-in-a-imageview-android
- * The categories view (and maybe other views) gets created more than once,
- *      this causes a bug that I used a try catch to cover up.
+ * The categories view (and maybe other views) gets created more than once (maybe it has something to do with the bottom nav bar)
+ *      - this causes a bug that I used a try catch to cover up.
+ *      - also apparently causes the list to refresh with new images. Which I like but it's not on purpose.
  */
 
 /** Maybe future:
+ * - Have categories filter for all and gifs
  * - Refresh the views so new images show up
  * - Test if the connection is okay so the app doesn't crash.
  * - View transition animations

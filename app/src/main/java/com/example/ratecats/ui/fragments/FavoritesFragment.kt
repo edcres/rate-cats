@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment() {
         val fragmentBinding =
             FragmentFavoritesBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        catFavsListAdapter = CatFavouritesAdapter(catsVm)
+        catFavsListAdapter = CatFavouritesAdapter(catsVm, requireContext())
         return fragmentBinding.root
     }
 

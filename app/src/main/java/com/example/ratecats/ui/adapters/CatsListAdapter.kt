@@ -1,8 +1,10 @@
 package com.example.ratecats.ui.adapters
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -18,11 +20,12 @@ import com.example.ratecats.ui.viewmodels.CatsViewModel
 private const val TAG = "CatsAdapt__TAG"
 
 class CatsListAdapter(
-    private val catsVm: CatsViewModel
+    private val catsVm: CatsViewModel,
+    private val context: Context
     ) : ListAdapter<CatPhoto, CatsListAdapter.CatsViewHolder>(CatPhotoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatsViewHolder {
-        return CatsViewHolder.from(catsVm, parent)
+        return CatsViewHolder.from(catsVm, context, parent)
     }
 
     override fun onBindViewHolder(holder: CatsViewHolder, position: Int) =
@@ -30,6 +33,7 @@ class CatsListAdapter(
 
     class CatsViewHolder private constructor(
         private val catsVm: CatsViewModel,
+        private val context: Context,
         private val binding: CatPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -44,14 +48,16 @@ class CatsListAdapter(
                     .into(catImg)
                 executePendingBindings()
                 favoriteImgBtn.setOnClickListener {
-                    // todo: change the image to on (or off and undo favorite)
-                    //  check if imgBtn is on or off
-                    catsVm.addFavorite(LocalFavoritedImg(catPhoto.id, catPhoto.imgSrcUrl))
-//                    catsVm.getAllMyFavorites()
-                    Log.d(TAG, "id sent: ${catPhoto.id}")
-
-                    // todo: remove favorite when appropriate
-//                    catsVm.removeFavorite(catPhoto.id)
+                    when(favoriteImgBtn.drawable) {
+                        ContextCompat.getDrawable(context, R.drawable.ic_favorite_off_24) -> {
+                            catsVm.addFavorite(LocalFavoritedImg(catPhoto.id, catPhoto.imgSrcUrl))
+                            favoriteImgBtn.setImageResource(R.drawable.ic_favorite_on_24)
+                        }
+                        ContextCompat.getDrawable(context, R.drawable.ic_favorite_on_24) -> {
+                            catsVm.removeFavorite(LocalFavoritedImg(catPhoto.id, catPhoto.imgSrcUrl))
+                            favoriteImgBtn.setImageResource(R.drawable.ic_favorite_off_24)
+                        }
+                    }
                 }
             }
         }
@@ -59,12 +65,13 @@ class CatsListAdapter(
         companion object {
             fun from(
                 catsVm: CatsViewModel,
+                context: Context,
                 parent: ViewGroup
             ): CatsViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = CatPhotoItemBinding
                     .inflate(layoutInflater, parent, false)
-                return CatsViewHolder(catsVm, binding)
+                return CatsViewHolder(catsVm, context, binding)
             }
         }
     }

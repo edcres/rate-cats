@@ -34,7 +34,7 @@ class CategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         catsVm.setupLocalBackend(requireActivity().application)
-        catsListAdapter = CatsListAdapter(catsVm)
+        catsListAdapter = CatsListAdapter(catsVm, requireContext())
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             categoriesCatsRecycler.adapter = catsListAdapter

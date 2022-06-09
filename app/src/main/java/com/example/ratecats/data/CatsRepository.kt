@@ -21,7 +21,6 @@ class CatsRepository(private val roomDb: CatsRoomDatabase) {
         return if (favourites.isSuccessful) favourites.body()!! else listOf()
     }
 
-//    suspend fun addFavorite(imgId: String): Response<String> {
     suspend fun addFavorite(imgId: String): Response<Any> {
         val toReturn = CatsApi.catsApiService.addFavorite(FavouriteImage(imgId, SUB_ID))
         Log.d(TAG, "addFavorite: is called")
