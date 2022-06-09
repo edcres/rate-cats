@@ -20,7 +20,7 @@
                     android:layout_marginEnd="16dp"
                     android:background="@color/img_background"
                     android:scaleType="fitStart"
-                    app:layout_constraintEnd_toStartOf="@+id/like_img_btn"
+                    app:layout_constraintEnd_toStartOf="@+id/favorite_img_btn"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -31,33 +31,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/card_view"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/like_img_btn"
-                    app:layout_constraintStart_toStartOf="@+id/like_img_btn"
-                    app:layout_constraintTop_toBottomOf="@+id/dislike_img_btn"
-                    app:srcCompat="@drawable/ic_favorite_off_24" />
-
-                <ImageButton
-                    android:id="@+id/like_img_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:backgroundTint="@color/card_view"
-                    app:layout_constraintBottom_toTopOf="@+id/dislike_img_btn"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_thumb_up_off_24" />
+                    app:srcCompat="@drawable/ic_favorite_off_24" />
 
-                <ImageButton
-                    android:id="@+id/dislike_img_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/card_view"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/like_img_btn"
-                    app:layout_constraintStart_toStartOf="@+id/like_img_btn"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_thumb_down_off_24" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/like_img_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/card_view"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/dislike_img_btn"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/ic_thumb_up_off_24" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/dislike_img_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/card_view"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/like_img_btn"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/like_img_btn"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/ic_thumb_down_off_24" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

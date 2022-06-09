@@ -39,7 +39,12 @@ class CatsViewModel: ViewModel() {
 
     // DATABASE QUERIES //
     private fun getAllPhotos() = viewModelScope.launch {
-        _allPhotos.postValue(repo.getAllPhotos())
+        try {
+            _allPhotos.postValue(repo.getAllPhotos())
+        } catch (error: Exception) {
+            Log.e(TAG, "getAllPhotos: $error")
+            // Expected an int but was NULL at path $[99].width
+        }
     }
     private fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
     private fun getFavoritesFromAPI() = viewModelScope.launch {

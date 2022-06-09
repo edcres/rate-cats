@@ -13,10 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
  * - favourites
- *      - POST add favorite (test)
- *      - Test GET and POST
  *      - DELETE old favorites
- *
  *      - send different 'sub_id' to the API query
  *
  * - exclude gifs from categories queries
@@ -29,7 +26,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * - filter categories in the all view
  *
  * - check each item in the ViewHolder to see if it is favorites
- * - check each item in the ViewHolder to see if it is liked
+ *
+ * - Improve the look of the cardView
  *
  * - Explore the breed attribute
  */
@@ -46,9 +44,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 /** todo: possible bugs
  * If need to resize the image:
  *  - https://stackoverflow.com/questions/46114603/resize-images-with-glide-in-a-imageview-android
+ * The categories view (and maybe other views) gets created more than once,
+ *      this causes a bug that I used a try catch to cover up.
  */
 
 /** Maybe future:
+ * - Refresh the views so new images show up
  * - Test if the connection is okay so the app doesn't crash.
  * - View transition animations
  * - probably make it a gridlayout manager.
@@ -57,6 +58,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * - Make the images align better. Have a linear layout instead of the constraint layout,
  *      - and have a constraint layout for the imgBtns
  * - Use different sub_ids for different users.
+ * - Have a like and dislike button
  */
 
 private const val TAG = "MainAct__TAG"

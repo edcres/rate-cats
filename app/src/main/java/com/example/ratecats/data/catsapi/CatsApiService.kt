@@ -31,7 +31,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CatsApiService {
-    @GET("$API_V/images/search?limit=100")
+    @GET("$API_V/images/search?mime_types=jpg,png&limit=100")
     suspend fun getAllPhotos(): List<CatPhoto>
 
     @GET("$API_V/images/search?mime_types=gif&limit=100")
@@ -48,7 +48,7 @@ interface CatsApiService {
     @POST("$API_V/favourites?limit=100")
     suspend fun addFavorite(
         @Body favouriteImage: FavouriteImage
-    ): Response<String>
+    ): Response<Any>
 
     @DELETE("$API_V/favourites")
     suspend fun removeFavorite(

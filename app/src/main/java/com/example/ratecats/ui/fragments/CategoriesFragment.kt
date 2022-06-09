@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ratecats.databinding.FragmentCategoriesBinding
 import com.example.ratecats.ui.adapters.CatsListAdapter
 import com.example.ratecats.ui.viewmodels.CatsViewModel
+import kotlin.math.log
 
 private const val TAG = "Categories__TAG"
 
@@ -40,6 +41,7 @@ class CategoriesFragment : Fragment() {
             categoriesCatsRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
         setObservers()
+        Log.d(TAG, "onViewCreated: called")
     }
 
     override fun onDestroyView() {
