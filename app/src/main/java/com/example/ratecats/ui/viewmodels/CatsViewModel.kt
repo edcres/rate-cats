@@ -34,7 +34,6 @@ class CatsViewModel: ViewModel() {
 
     // SETUP //
     fun setupLocalBackend(application: Application) {
-        // todo: call this
         roomDb = CatsRoomDatabase.getInstance(application)
         repo = CatsRepository(roomDb)
         getSavedFavourites()
@@ -52,15 +51,14 @@ class CatsViewModel: ViewModel() {
         repo.getSavedPhotos().collect { _savedFavourites.postValue(it) }
     }
     fun addFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
-        repo.addFavorite(img.imgId)
-        // todo: add it to Room
-        // only if it's successful in the API
-        repo.insert(img)
+        if(repo.addFavorite(img.imgId).isSuccessful){
+            repo.insert(img)
+        }
     }
-    fun removeFavorite(favoriteId: String) = viewModelScope.launch {
-        repo.removeFavorite(favoriteId)
-        // todo: remove it from Room
-        // only if it's successful in the API
+    fun removeFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
+        if (repo.removeFavorite(img.imgId).isSuccessful) {
+            repo.delete(img)
+        }
     }
     // DATABASE QUERIES //
 }

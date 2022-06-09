@@ -1,5 +1,6 @@
 package com.example.ratecats.data
 
+import androidx.annotation.WorkerThread
 import com.example.ratecats.data.catsapi.CatPhoto
 import com.example.ratecats.data.catsapi.CatsApi
 import com.example.ratecats.data.catsapi.FavouriteImage
@@ -22,10 +23,13 @@ class CatsRepository(private val roomDb: CatsRoomDatabase) {
     suspend fun removeFavorite(favoriteId: String) =
         CatsApi.catsApiService.removeFavorite(favoriteId)
     // Local
+    @WorkerThread
     fun getSavedPhotos(): Flow<List<LocalFavoritedImg>> =
         roomDb.favoritedImgDao().getFavoritedImages()
+    @WorkerThread
     suspend fun insert(localFavoritedImg: LocalFavoritedImg) =
         roomDb.favoritedImgDao().insert(localFavoritedImg)
+    @WorkerThread
     suspend fun delete(localFavoritedImg: LocalFavoritedImg) =
         roomDb.favoritedImgDao().delete(localFavoritedImg)
 }

@@ -49,6 +49,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  */
 
 /** Maybe future:
+ * - Test if the connection is okay so the app doesn't crash.
  * - View transition animations
  * - probably make it a gridlayout manager.
  * - Upload feature and upload tab.

@@ -38,6 +38,7 @@ class CategoriesFragment : Fragment() {
             categoriesCatsRecycler.adapter = catsListAdapter
             categoriesCatsRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
+        catsVm.setupLocalBackend(requireActivity().application)
         setObservers()
     }
 

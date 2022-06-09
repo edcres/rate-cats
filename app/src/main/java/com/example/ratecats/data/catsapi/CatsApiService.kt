@@ -53,7 +53,7 @@ interface CatsApiService {
     @DELETE("$API_V/favourites")
     suspend fun removeFavorite(
         @Query("favourite_id") image_id: String,
-    )
+    ): Response<String>
 }
 
 object CatsApi {
