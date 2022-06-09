@@ -26,22 +26,21 @@ class CatsViewModel: ViewModel() {
     private val _savedFavourites = MutableLiveData<List<LocalFavoritedImg>>()
     val savedFavourites: LiveData<List<LocalFavoritedImg>> = _savedFavourites
 
-    init {
-        getAllPhotos()
-        getAllGifs()
-        getFavoritesFromAPI()
-    }
-
     // SETUP //
     fun setupLocalBackend(application: Application) {
         roomDb = CatsRoomDatabase.getInstance(application)
         repo = CatsRepository(roomDb)
         getSavedFavourites()
+        getAllPhotos()
+        getAllGifs()
+        getFavoritesFromAPI()
     }
     // SETUP //
 
     // DATABASE QUERIES //
-    private fun getAllPhotos() = viewModelScope.launch { _allPhotos.postValue(repo.getAllPhotos()) }
+    private fun getAllPhotos() = viewModelScope.launch {
+        _allPhotos.postValue(repo.getAllPhotos())
+    }
     private fun getAllGifs() = viewModelScope.launch { _allGifs.postValue(repo.getAllGifs()) }
     private fun getFavoritesFromAPI() = viewModelScope.launch {
         // Can use this to check if the Web API and Room match

@@ -27,18 +27,18 @@ class CategoriesFragment : Fragment() {
         val fragmentBinding =
             FragmentCategoriesBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        catsListAdapter = CatsListAdapter(catsVm)
         return fragmentBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        catsVm.setupLocalBackend(requireActivity().application)
+        catsListAdapter = CatsListAdapter(catsVm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             categoriesCatsRecycler.adapter = catsListAdapter
             categoriesCatsRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
-        catsVm.setupLocalBackend(requireActivity().application)
         setObservers()
     }
 

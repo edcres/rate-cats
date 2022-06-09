@@ -9,7 +9,7 @@ import com.example.ratecats.data.room.LocalFavoritedImg
 import kotlinx.coroutines.flow.Flow
 
 private const val TAG = "Repo__TAG"
-private const val SUB_ID = "00005"
+private const val SUB_ID = "00006"
 
 class CatsRepository(private val roomDb: CatsRoomDatabase) {
     suspend fun getAllPhotos(): List<CatPhoto> = CatsApi.catsApiService.getAllPhotos()
