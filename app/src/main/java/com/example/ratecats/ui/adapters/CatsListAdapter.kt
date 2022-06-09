@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.ratecats.R
 import com.example.ratecats.data.catsapi.CatPhoto
+import com.example.ratecats.data.room.LocalFavoritedImg
 import com.example.ratecats.databinding.CatPhotoItemBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
@@ -45,7 +46,7 @@ class CatsListAdapter(
                 favoriteImgBtn.setOnClickListener {
                     // todo: change the image to on (or off and undo favorite)
                     //  check if imgBtn is on or off
-                    catsVm.addFavorite(catPhoto.id)
+                    catsVm.addFavorite(LocalFavoritedImg(catPhoto.id, catPhoto.imgSrcUrl))
 //                    catsVm.getAllMyFavorites()
                     Log.d(TAG, "id sent: ${catPhoto.id}")
 

@@ -17,10 +17,15 @@ class CatsRepository(private val roomDb: CatsRoomDatabase) {
         val favourites = CatsApi.catsApiService.getMyFavorites(SUB_ID)
         return if (favourites.isSuccessful) favourites.body()!! else listOf()
     }
-    fun getSavedPhotos(): Flow<List<LocalFavoritedImg>> =
-        roomDb.favoritedImgDao().getFavoritedImages()
     suspend fun addFavorite(imgId: String) =
         CatsApi.catsApiService.addFavorite(FavouriteImage(imgId, SUB_ID))
     suspend fun removeFavorite(favoriteId: String) =
         CatsApi.catsApiService.removeFavorite(favoriteId)
+    // Local
+    fun getSavedPhotos(): Flow<List<LocalFavoritedImg>> =
+        roomDb.favoritedImgDao().getFavoritedImages()
+    suspend fun insert(localFavoritedImg: LocalFavoritedImg) =
+        roomDb.favoritedImgDao().insert(localFavoritedImg)
+    suspend fun delete(localFavoritedImg: LocalFavoritedImg) =
+        roomDb.favoritedImgDao().delete(localFavoritedImg)
 }

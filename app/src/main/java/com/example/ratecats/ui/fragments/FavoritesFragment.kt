@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ratecats.databinding.FragmentFavoritesBinding
-import com.example.ratecats.ui.adapters.CatImagesAdapter
+import com.example.ratecats.ui.adapters.CatFavouritesAdapter
 import com.example.ratecats.ui.viewmodels.CatsViewModel
 
 private const val TAG = "Favorites__TAG"
@@ -18,7 +18,7 @@ class FavoritesFragment : Fragment() {
 
     private var binding: FragmentFavoritesBinding? = null
     private val catsVm: CatsViewModel by activityViewModels()
-    private lateinit var catFavsListAdapter: CatImagesAdapter
+    private lateinit var catFavsListAdapter: CatFavouritesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment() {
         val fragmentBinding =
             FragmentFavoritesBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        catFavsListAdapter = CatImagesAdapter(catsVm)
+        catFavsListAdapter = CatFavouritesAdapter(catsVm)
         return fragmentBinding.root
     }
 

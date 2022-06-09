@@ -16,9 +16,9 @@ import com.example.ratecats.ui.viewmodels.CatsViewModel
 
 private const val TAG = "LocalCatsAdapt__TAG"
 
-class CatImagesAdapter(
+class CatFavouritesAdapter(
     private val catsVm: CatsViewModel
-) : ListAdapter<LocalFavoritedImg, CatImagesAdapter.LocalCatsViewHolder>(LocalCatDiffCallback()) {
+) : ListAdapter<LocalFavoritedImg, CatFavouritesAdapter.LocalCatsViewHolder>(LocalCatDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocalCatsViewHolder {
         return LocalCatsViewHolder.from(catsVm, parent)
@@ -45,7 +45,7 @@ class CatImagesAdapter(
                 favoriteImgBtn.setOnClickListener {
                     // todo: change the image to on (or off and undo favorite)
                     //  check if imgBtn is on or off
-                    catsVm.addFavorite(catPhoto.imgId)
+                    catsVm.addFavorite(catPhoto)
 //                    catsVm.getAllMyFavorites()
                     Log.d(TAG, "id sent: ${catPhoto.imgId}")
 
