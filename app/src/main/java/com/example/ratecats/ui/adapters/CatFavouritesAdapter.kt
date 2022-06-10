@@ -1,5 +1,6 @@
 package com.example.ratecats.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,7 @@ class CatFavouritesAdapter(
                     switchBtnsVisibility()
                 }
                 favoriteOnBtn.setOnClickListener {
+                    Log.d(TAG, "bind: clicked")
                     catsVm.removeFavorite(LocalFavoritedImg(catPhoto.imgId, catPhoto.imgUrl))
                     switchBtnsVisibility()
                 }

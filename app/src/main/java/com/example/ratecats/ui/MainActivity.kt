@@ -14,13 +14,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 /** todo:
  * - favourites
  *      - DELETE old favorites
- *
- * - check each item in the ViewHolder to see if it is favorited ans set the appropriate image
- *          - check the map in the viewModel with .contains(key)
- *
- * - Improve the look of the cardView
- *
- * - Explore the breed attribute
  */
 
 /** todo: bugs
@@ -32,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  */
 
 /** Maybe future:
+ * - Improve the look of the cardView
  * - Have categories filter for all and gifs
  * - Refresh the views so new images show up
  * - Test if the connection is okay so the app doesn't crash.
@@ -43,6 +37,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  *      - and have a constraint layout for the imgBtns
  * - Use different sub_ids for different users.
  * - Have a like and dislike button
+ * - Explore the breed attribute
  */
 
 private const val TAG = "MainAct__TAG"

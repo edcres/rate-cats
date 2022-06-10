@@ -62,6 +62,7 @@ class CatsViewModel: ViewModel() {
     private fun getFavoritesFromAPI() = viewModelScope.launch {
         // Can use this to check if the Web API and Room match
         Log.i(TAG, "getFavoritesFromAPI: favourites size = ${repo.getFavoritesFromAPI().size}")
+        Log.i(TAG, "getFavoritesFromAPI: favourites = ${repo.getFavoritesFromAPI()}")
     }
     private fun getSavedFavourites() = viewModelScope.launch {
         repo.getSavedPhotos().collect { _savedFavourites.postValue(it) }
@@ -72,8 +73,12 @@ class CatsViewModel: ViewModel() {
         }
     }
     fun removeFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
+        Log.d(TAG, "removeFavorite: id to delete = ${img.imgId}")
         if (repo.removeFavorite(img.imgId).isSuccessful) {
             repo.delete(img)
+            Log.d(TAG, "removeFavorite: deleted")
+        } else {
+            Log.d(TAG, "removeFavorite: delete failed")
         }
     }
     // DATABASE QUERIES //
