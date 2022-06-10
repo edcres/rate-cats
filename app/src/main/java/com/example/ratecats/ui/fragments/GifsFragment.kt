@@ -27,7 +27,7 @@ class GifsFragment : Fragment() {
         val fragmentBinding =
             FragmentGifsBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        catsListAdapter = CatsListAdapter(catsVm, requireContext())
+        catsListAdapter = CatsListAdapter(catsVm)
         return fragmentBinding.root
     }
 

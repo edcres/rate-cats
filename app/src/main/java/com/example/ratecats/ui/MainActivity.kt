@@ -14,9 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 /** todo:
  * - favourites
  *      - DELETE old favorites
- *      - send different 'sub_id' to the API query
  *
- * - check each item in the ViewHolder to see if it is favorited
+ * - check each item in the ViewHolder to see if it is favorited ans set the appropriate image
  *          - check the map in the viewModel with .contains(key)
  *
  * - Improve the look of the cardView

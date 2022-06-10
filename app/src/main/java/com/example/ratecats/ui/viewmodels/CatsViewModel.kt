@@ -26,6 +26,18 @@ class CatsViewModel: ViewModel() {
     private val _savedFavourites = MutableLiveData<List<LocalFavoritedImg>>()
     val savedFavourites: LiveData<List<LocalFavoritedImg>> = _savedFavourites
 
+    // HELPERS //
+    fun favoritesContainsId(imgId: String): Boolean {
+        // todo: there's probably a more efficient way to do this, now the saved favorites list is cycled for every reccycler item in Categories and Gifs
+        //      - probably do something with a map
+
+        _savedFavourites.value!!.forEach {
+            if(it.imgId == imgId) return true
+        }
+        return false
+    }
+    // HELPERS //
+
     // SETUP //
     fun setupLocalBackend(application: Application) {
         roomDb = CatsRoomDatabase.getInstance(application)
