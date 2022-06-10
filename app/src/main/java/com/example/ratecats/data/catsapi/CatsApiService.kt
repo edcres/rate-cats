@@ -42,12 +42,12 @@ interface CatsApiService {
     @GET("$API_V/favourites?limit=100")
     suspend fun getMyFavorites(
         @Query("sub_id") subId: String
-    ): Response<List<FavouriteImage>>
+    ): Response<List<FavImgResponse>>
 
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
     @POST("$API_V/favourites?limit=100")
     suspend fun addFavorite(
-        @Body favouriteImage: FavouriteImage
+        @Body favImageSend: FavImageSend
     ): Response<Any>
 
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")

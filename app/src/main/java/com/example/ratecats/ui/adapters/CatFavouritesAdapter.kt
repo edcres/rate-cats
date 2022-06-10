@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.ratecats.R
+import com.example.ratecats.data.catsapi.FavImgResponse
 import com.example.ratecats.data.room.LocalFavoritedImg
 import com.example.ratecats.databinding.CatPhotoItemBinding
 import com.example.ratecats.ui.viewmodels.CatsViewModel
@@ -19,7 +20,7 @@ private const val TAG = "LocalCatsAdapt__TAG"
 
 class CatFavouritesAdapter(
     private val catsVm: CatsViewModel
-) : ListAdapter<LocalFavoritedImg, CatFavouritesAdapter.LocalCatsViewHolder>(LocalCatDiffCallback()) {
+) : ListAdapter<FavImgResponse, CatFavouritesAdapter.LocalCatsViewHolder>(LocalCatDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocalCatsViewHolder =
         LocalCatsViewHolder.from(catsVm, parent)
@@ -32,10 +33,10 @@ class CatFavouritesAdapter(
         private val binding: CatPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(catPhoto: LocalFavoritedImg) {
+        fun bind(imgResponse: FavImgResponse) {
             binding.apply {
                 Glide.with(catImg.context)
-                    .load(catPhoto.imgUrl.toUri())
+                    .load(imgResponse.image.url.toUri())
                     .apply(
                         RequestOptions()
                             .placeholder(R.drawable.loading_anim)
@@ -46,12 +47,21 @@ class CatFavouritesAdapter(
                 favoriteOnBtn.visibility = View.VISIBLE
 
                 favoriteOffBtn.setOnClickListener {
-                    catsVm.addFavorite(LocalFavoritedImg(catPhoto.imgId, catPhoto.imgUrl))
+                    catsVm.addFavorite(LocalFavoritedImg(
+                        imgResponse.image_id,
+                        imgResponse.id,
+                        imgResponse.sub_id,
+                        imgResponse.image.url)
+                    )
                     switchBtnsVisibility()
                 }
                 favoriteOnBtn.setOnClickListener {
                     Log.d(TAG, "bind: clicked")
-                    catsVm.removeFavorite(LocalFavoritedImg(catPhoto.imgId, catPhoto.imgUrl))
+                    catsVm.removeFavorite(LocalFavoritedImg(
+                        imgResponse.image_id,
+                        imgResponse.id,
+                        imgResponse.sub_id,
+                        imgResponse.image.url))
                     switchBtnsVisibility()
                 }
                 executePendingBindings()
@@ -83,11 +93,11 @@ class CatFavouritesAdapter(
         }
     }
 
-    class LocalCatDiffCallback : DiffUtil.ItemCallback<LocalFavoritedImg>() {
-        override fun areItemsTheSame(oldItem: LocalFavoritedImg, newItem: LocalFavoritedImg): Boolean {
-            return oldItem.imgId == newItem.imgId
+    class LocalCatDiffCallback : DiffUtil.ItemCallback<FavImgResponse>() {
+        override fun areItemsTheSame(oldItem: FavImgResponse, newItem: FavImgResponse): Boolean {
+            return oldItem.image_id == newItem.image_id
         }
-        override fun areContentsTheSame(oldItem: LocalFavoritedImg, newItem: LocalFavoritedImg): Boolean {
+        override fun areContentsTheSame(oldItem: FavImgResponse, newItem: FavImgResponse): Boolean {
             return oldItem == newItem
         }
     }

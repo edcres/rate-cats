@@ -48,11 +48,15 @@ class CatsListAdapter(
                 }
 
                 favoriteOffBtn.setOnClickListener {
-                    catsVm.addFavorite(LocalFavoritedImg(catPhoto.id, catPhoto.imgSrcUrl))
+                    catsVm.addFavorite(LocalFavoritedImg(
+                        catPhoto.id, null, null, catPhoto.imgSrcUrl)
+                    )
                     switchBtnsVisibility()
                 }
                 favoriteOnBtn.setOnClickListener {
-                    catsVm.removeFavorite(LocalFavoritedImg(catPhoto.id, catPhoto.imgSrcUrl))
+                    catsVm.removeFavorite(LocalFavoritedImg(
+                        catPhoto.id, null, null, catPhoto.imgSrcUrl)
+                    )
                     switchBtnsVisibility()
                 }
                 executePendingBindings()
