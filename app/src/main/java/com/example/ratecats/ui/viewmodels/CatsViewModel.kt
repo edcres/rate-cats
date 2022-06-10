@@ -36,11 +36,22 @@ class CatsViewModel: ViewModel() {
     fun favoritesContainsId(imgId: String): Boolean {
         // todo: there's probably a more efficient way to do this, now the saved favorites list is cycled for every reccycler item in Categories and Gifs
         //      - probably do something with a map
-
         _savedFavourites.value!!.forEach {
             if(it.imgId == imgId) return true
         }
         return false
+    }
+    fun localFavsToFavResponse(localFavs: List<LocalFavoritedImg>): List<FavImgResponse> {
+        val convertedList = mutableListOf<FavImgResponse>()
+        localFavs.forEach {
+            convertedList.add(FavImgResponse(
+                    it.id ?: "0",
+                    it.imgId,
+                    it.subId ?: "0",
+                    FavImgResponse.Image(it.imgId, it.imgUrl))
+            )
+        }
+        return convertedList
     }
     // HELPERS //
 

@@ -9,10 +9,10 @@ data class LocalFavoritedImg (
     @PrimaryKey
     @ColumnInfo(name = "img_id")
     val imgId: String,
-    @ColumnInfo(name = "img_id")
+    @ColumnInfo(name = "id")
     var id: String?,
-    @ColumnInfo(name = "img_id")
-    var sub_id: String?,
+    @ColumnInfo(name = "sub_id")
+    val subId: String?,
     @ColumnInfo(name = "img_url")
     val imgUrl: String
 )

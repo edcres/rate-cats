@@ -52,6 +52,7 @@ class FavoritesFragment : Fragment() {
         }
         catsVm.savedFavourites.observe(viewLifecycleOwner) {
             // todo: turn 'it' into a list of LocalFavouriteImg and display submit it
+            catsVm.localFavsToFavResponse(it)
 //            catFavsListAdapter.submitList(it)
 //            Log.d(TAG, "favorites: ${it.size}")
         }
