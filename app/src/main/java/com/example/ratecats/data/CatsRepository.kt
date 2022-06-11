@@ -1,6 +1,5 @@
 package com.example.ratecats.data
 
-import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.ratecats.data.catsapi.CatPhoto
 import com.example.ratecats.data.catsapi.CatsApi
@@ -23,9 +22,7 @@ class CatsRepository(private val roomDb: CatsRoomDatabase) {
     }
 
     suspend fun addFavorite(imgId: String): Response<Any> {
-        val toReturn = CatsApi.catsApiService.addFavorite(FavImageSend(imgId, SUB_ID))
-        Log.d(TAG, "addFavorite: is called")
-        return toReturn
+        return CatsApi.catsApiService.addFavorite(FavImageSend(imgId, SUB_ID))
     }
 
     suspend fun removeFavorite(favoriteId: String) =

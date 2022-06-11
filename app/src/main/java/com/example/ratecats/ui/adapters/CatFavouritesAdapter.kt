@@ -56,7 +56,6 @@ class CatFavouritesAdapter(
                     switchBtnsVisibility()
                 }
                 favoriteOnBtn.setOnClickListener {
-                    Log.d(TAG, "bind: clicked")
                     catsVm.removeFavorite(LocalFavoritedImg(
                         imgResponse.image_id,
                         imgResponse.id,

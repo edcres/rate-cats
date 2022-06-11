@@ -11,18 +11,14 @@ import androidx.navigation.ui.NavigationUI
 import com.example.ratecats.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-/** todo:
- * - favourites
- *      - DELETE old favorites
- */
-
 /** todo: bugs
  * If need to resize the image:
  *  - https://stackoverflow.com/questions/46114603/resize-images-with-glide-in-a-imageview-android
  * The categories view (and maybe other views) gets created more than once (maybe it has something to do with the bottom nav bar)
  *      - this causes a bug that I used a try catch to cover up.
- *      - also apparently causes the list to refresh with new images. Which I like but it's not on purpose.
+ *      - also apparently causes the lists to refresh with new images. Which I like but it's not on purpose.
  * Bug checking if a favourite contains if 'favoritesContainsId()'
+ * Bug removing a favourite from other than the favourites view
  */
 
 /** Maybe future:

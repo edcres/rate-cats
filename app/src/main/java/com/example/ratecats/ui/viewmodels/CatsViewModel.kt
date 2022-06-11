@@ -99,11 +99,11 @@ class CatsViewModel: ViewModel() {
         }
     }
     fun removeFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
-        Log.d(TAG, "removeFavorite: asdd")
-        Log.d(TAG, "removeFavorite: img.id = ${img.id}")
         try {
             if (repo.removeFavorite(img.id ?: "placeholder").isSuccessful) {
-                repo.deleteLocal(img)
+                Log.d(TAG, "removeFavorite1")
+                repo.deleteLocal(img)   // This code is not reached if it crashes above
+                Log.d(TAG, "removeFavorite2")
                 Log.d(TAG, "removeFavorite: deleted")
             } else {
                 Log.e(TAG, "removeFavorite: delete failed")
@@ -111,6 +111,7 @@ class CatsViewModel: ViewModel() {
         } catch (exception: JsonDataException) {
             // Data is removed but it crashes probably bc an item is not found in a list
             Log.e(TAG, "removeFavorite: \n$exception")
+            repo.deleteLocal(img)   // Code crashes when the item is removed from the db
         }
     }
     // DATABASE QUERIES //
