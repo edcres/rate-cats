@@ -11,6 +11,7 @@ import com.example.ratecats.data.CatsRepository
 import com.example.ratecats.data.catsapi.FavImgResponse
 import com.example.ratecats.data.room.CatsRoomDatabase
 import com.example.ratecats.data.room.LocalFavoritedImg
+import com.squareup.moshi.JsonDataException
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -25,7 +26,6 @@ class CatsViewModel: ViewModel() {
     private val _allGifs = MutableLiveData<List<CatPhoto>>()
     val allGifs: LiveData<List<CatPhoto>> = _allGifs
 
-    // todo: observe these
     private val _apiFavourites = MutableLiveData<List<FavImgResponse>>()
     val apiFavourites: LiveData<List<FavImgResponse>> = _apiFavourites
 
@@ -34,9 +34,7 @@ class CatsViewModel: ViewModel() {
 
     // HELPERS //
     fun favoritesContainsId(imgId: String): Boolean {
-        // todo: there's probably a more efficient way to do this, now the saved favorites list is cycled for every reccycler item in Categories and Gifs
-        //      - probably do something with a map
-        _savedFavourites.value!!.forEach {
+        _savedFavourites.value ?: listOf<LocalFavoritedImg>().forEach {
             if(it.imgId == imgId) return true
         }
         return false
@@ -101,12 +99,18 @@ class CatsViewModel: ViewModel() {
         }
     }
     fun removeFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
-        Log.d(TAG, "removeFavorite: id to delete = ${img.imgId}")
-        if (repo.removeFavorite(img.imgId).isSuccessful) {
-            repo.deleteLocal(img)
-            Log.d(TAG, "removeFavorite: deleted")
-        } else {
-            Log.d(TAG, "removeFavorite: delete failed")
+        Log.d(TAG, "removeFavorite: asdd")
+        Log.d(TAG, "removeFavorite: img.id = ${img.id}")
+        try {
+            if (repo.removeFavorite(img.id ?: "placeholder").isSuccessful) {
+                repo.deleteLocal(img)
+                Log.d(TAG, "removeFavorite: deleted")
+            } else {
+                Log.e(TAG, "removeFavorite: delete failed")
+            }
+        } catch (exception: JsonDataException) {
+            // Data is removed but it crashes probably bc an item is not found in a list
+            Log.e(TAG, "removeFavorite: \n$exception")
         }
     }
     // DATABASE QUERIES //

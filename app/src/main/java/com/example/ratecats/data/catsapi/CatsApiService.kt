@@ -51,9 +51,9 @@ interface CatsApiService {
     ): Response<Any>
 
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
-    @DELETE("$API_V/favourites")
+    @DELETE("$API_V/favourites/{id}")
     suspend fun removeFavorite(
-        @Query("favourite_id") image_id: String,
+        @Path("id") id: String,
     ): Response<String>
 }
 

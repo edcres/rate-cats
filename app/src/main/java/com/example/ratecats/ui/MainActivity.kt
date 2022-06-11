@@ -22,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * The categories view (and maybe other views) gets created more than once (maybe it has something to do with the bottom nav bar)
  *      - this causes a bug that I used a try catch to cover up.
  *      - also apparently causes the list to refresh with new images. Which I like but it's not on purpose.
+ * Bug checking if a favourite contains if 'favoritesContainsId()'
  */
 
 /** Maybe future:

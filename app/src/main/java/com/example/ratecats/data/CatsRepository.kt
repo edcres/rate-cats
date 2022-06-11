@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 private const val TAG = "Repo__TAG"
-private const val SUB_ID = "00006"
+private const val SUB_ID = "00001"
 
 class CatsRepository(private val roomDb: CatsRoomDatabase) {
     suspend fun getAllPhotos(): List<CatPhoto> = CatsApi.catsApiService.getAllPhotos()
