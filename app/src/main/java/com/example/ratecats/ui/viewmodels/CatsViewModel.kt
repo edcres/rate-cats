@@ -11,7 +11,6 @@ import com.example.ratecats.data.CatsRepository
 import com.example.ratecats.data.catsapi.FavImgResponse
 import com.example.ratecats.data.room.CatsRoomDatabase
 import com.example.ratecats.data.room.LocalFavoritedImg
-import com.squareup.moshi.JsonDataException
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -101,15 +100,14 @@ class CatsViewModel: ViewModel() {
     fun removeFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
         try {
             if (repo.removeFavorite(img.id ?: "placeholder").isSuccessful) {
-                Log.d(TAG, "removeFavorite1")
                 repo.deleteLocal(img)   // This code is not reached if it crashes above
-                Log.d(TAG, "removeFavorite2")
                 Log.d(TAG, "removeFavorite: deleted")
             } else {
                 Log.e(TAG, "removeFavorite: delete failed")
             }
-        } catch (exception: JsonDataException) {
-            // Data is removed but it crashes probably bc an item is not found in a list
+        } catch (exception: Exception) {
+            // Data is removed but it crashes probably bc an item is not found in a list,
+            //  or because there's no connection.
             Log.e(TAG, "removeFavorite: \n$exception")
             repo.deleteLocal(img)   // Code crashes when the item is removed from the db
         }
