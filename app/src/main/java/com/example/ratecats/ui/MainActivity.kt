@@ -11,36 +11,6 @@ import androidx.navigation.ui.NavigationUI
 import com.example.ratecats.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-/** todo: bugs
- * If need to resize the image:
- *  - https://stackoverflow.com/questions/46114603/resize-images-with-glide-in-a-imageview-android
- * The categories view (and maybe other views) gets created more than once
- *  (maybe it has something to do with the bottom nav bar)
- *      - this causes a bug that I used a try catch to cover up.
- *      - also apparently causes the lists to refresh with new images. Which I like but it's not on purpose.
- * Bug checking if a favourite contains if 'favoritesContainsId()'
- * Bug removing a favourite from other than the favourites view
- * App crashes when removing a favourite from the API (I covered the bug but it's better to fix it)
- */
-
-/** Maybe future:
- * - Improve the look of the cardView
- * - Have categories filter for all and gifs
- * - Refresh the views so new images show up
- * - Test if the connection is okay so the app doesn't crash.
- * - View transition animations
- * - probably make it a gridlayout manager.
- * - Upload feature and upload tab.
- * - animations for the thumb up and thumb down and the others.
- * - Make the images align better. Have a linear layout instead of the constraint layout,
- *      - and have a constraint layout for the imgBtns
- * - Use different sub_ids for different users.
- * - Have a like and dislike button
- * - Explore the breed attribute
- * - When the internet is off and the local favs are fetched,
- *      then internet turn on, the list is not updated with the remote favs.
- */
-
 private const val TAG = "MainAct__TAG"
 
 class MainActivity : AppCompatActivity() {
