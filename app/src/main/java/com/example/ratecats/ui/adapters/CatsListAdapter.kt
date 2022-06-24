@@ -36,7 +36,7 @@ class CatsListAdapter(
 
         fun bind(catPhoto: CatPhoto) {
             binding.apply {
-                
+
                 Glide.with(catImg.context)
                     .load(catPhoto.imgSrcUrl.toUri())
                     .apply(
