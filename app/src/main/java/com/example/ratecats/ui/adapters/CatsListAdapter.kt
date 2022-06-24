@@ -1,5 +1,6 @@
 package com.example.ratecats.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ class CatsListAdapter(
 
         fun bind(catPhoto: CatPhoto) {
             binding.apply {
+                
                 Glide.with(catImg.context)
                     .load(catPhoto.imgSrcUrl.toUri())
                     .apply(
@@ -42,6 +44,7 @@ class CatsListAdapter(
                             .placeholder(R.drawable.loading_anim)
                     )
                     .into(catImg)
+
                 if(catsVm.favoritesContainsId(catPhoto.id)) {
                     favoriteOffBtn.visibility = View.GONE
                     favoriteOnBtn.visibility = View.VISIBLE
