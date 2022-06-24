@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/ic_baseline_thumb_down_off_alt_24.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/ic_bookmark_off_24.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/ic_bookmark_on_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_favorite_off_24.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/ic_favorite_on_24.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_ordered_list_24.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/ic_thumb_down_on_24.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/ic_thumb_up_off_24.xml" value="0.101" />

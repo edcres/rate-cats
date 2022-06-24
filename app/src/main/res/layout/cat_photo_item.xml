@@ -1,81 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/transparent">
+
         <com.google.android.material.card.MaterialCardView
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/cat_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:scaleType="fitEnd"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-                <ImageView
-                    android:id="@+id/cat_img"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/img_background"
-                    android:scaleType="fitStart"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/btns_locator"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/backgrounds/scenic" />
-
-                <TextView
-                    android:id="@+id/btns_locator"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageButton
-                    android:id="@+id/favorite_off_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/card_view"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btns_locator"
-                    app:layout_constraintStart_toStartOf="@+id/btns_locator"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_favorite_off_24" />
-
-                <ImageButton
-                    android:id="@+id/favorite_on_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/card_view"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btns_locator"
-                    app:layout_constraintStart_toStartOf="@+id/btns_locator"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_favorite_on_24" />
-
-<!--                <ImageButton-->
-<!--                    android:id="@+id/like_img_btn"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:backgroundTint="@color/card_view"-->
-<!--                    app:layout_constraintBottom_toTopOf="@+id/dislike_img_btn"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:srcCompat="@drawable/ic_thumb_up_off_24" />-->
-
-<!--                <ImageButton-->
-<!--                    android:id="@+id/dislike_img_btn"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:backgroundTint="@color/card_view"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="@+id/like_img_btn"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/like_img_btn"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:srcCompat="@drawable/ic_thumb_down_off_24" />-->
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/btns_locator"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/favorite_off_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/transparent"
+            app:layout_constraintEnd_toEndOf="@+id/btns_locator"
+            app:layout_constraintStart_toStartOf="@+id/btns_locator"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite_off_24"
+            app:tint="@color/favorite_icon" />
+
+        <ImageButton
+            android:id="@+id/favorite_on_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/transparent"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/btns_locator"
+            app:layout_constraintStart_toStartOf="@+id/btns_locator"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite_on_24"
+            app:tint="@color/favorite_icon" />
+
+        <!--                <ImageButton-->
+        <!--                    android:id="@+id/like_img_btn"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:backgroundTint="@color/card_view"-->
+        <!--                    app:layout_constraintBottom_toTopOf="@+id/dislike_img_btn"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent"-->
+        <!--                    app:srcCompat="@drawable/ic_thumb_up_off_24" />-->
+
+        <!--                <ImageButton-->
+        <!--                    android:id="@+id/dislike_img_btn"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:backgroundTint="@color/card_view"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="@+id/like_img_btn"-->
+        <!--                    app:layout_constraintStart_toStartOf="@+id/like_img_btn"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent"-->
+        <!--                    app:srcCompat="@drawable/ic_thumb_down_off_24" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

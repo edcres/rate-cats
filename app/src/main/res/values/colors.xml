@@ -13,4 +13,6 @@
     <color name="main_dark">#746A8C</color>
     <color name="bottom_bar">#8C78BA</color>
     <color name="img_background">#655C78</color>
+    <color name="favorite_icon">#E3CC0B</color>
+    <color name="transparent">#00655C78</color>
 </resources>
