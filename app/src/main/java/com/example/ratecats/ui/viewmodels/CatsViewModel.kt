@@ -17,10 +17,10 @@ import java.net.UnknownHostException
 
 private const val TAG = "SharedVM__TAG"
 
-class CatsViewModel: ViewModel() {
+class CatsViewModel : ViewModel() {
 
     private lateinit var roomDb: CatsRoomDatabase
-    private lateinit var repo: CatsRepository
+    private var repo: CatsRepository = CatsRepository()
     private val _allPhotos = MutableLiveData<List<CatPhoto>>()
     val photos: LiveData<List<CatPhoto>> = _allPhotos
     private val _allGifs = MutableLiveData<List<CatPhoto>>()
@@ -32,21 +32,30 @@ class CatsViewModel: ViewModel() {
     private val _savedFavourites = MutableLiveData<List<LocalFavoritedImg>>()
     val savedFavourites: LiveData<List<LocalFavoritedImg>> = _savedFavourites
 
+    init {
+        getFavoritesFromAPI()
+        getAllPhotos()
+        getAllGifs()
+    }
+
     // HELPERS //
     fun favoritesContainsId(imgId: String): Boolean {
         _savedFavourites.value ?: listOf<LocalFavoritedImg>().forEach {
-            if(it.imgId == imgId) return true
+            if (it.imgId == imgId) return true
         }
         return false
     }
+
     fun localFavsToFavResponse(localFavs: List<LocalFavoritedImg>): List<FavImgResponse> {
         val convertedList = mutableListOf<FavImgResponse>()
         localFavs.forEach {
-            convertedList.add(FavImgResponse(
+            convertedList.add(
+                FavImgResponse(
                     it.id ?: "0",
                     it.imgId,
                     it.subId ?: "0",
-                    FavImgResponse.Image(it.imgId, it.imgUrl))
+                    FavImgResponse.Image(it.imgId, it.imgUrl)
+                )
             )
         }
         return convertedList
@@ -56,11 +65,7 @@ class CatsViewModel: ViewModel() {
     // SETUP //
     fun setupLocalBackend(application: Application) {
         roomDb = CatsRoomDatabase.getInstance(application)
-        repo = CatsRepository(roomDb)
-        getFavoritesFromAPI()
-        getAllPhotos()
-        getAllGifs()
-        getFavoritesFromAPI()
+        repo.roomDb = roomDb
     }
     // SETUP //
 
@@ -73,6 +78,7 @@ class CatsViewModel: ViewModel() {
             // Expected an int but was NULL at path $[99].width
         }
     }
+
     private fun getAllGifs() = viewModelScope.launch {
         try {
             _allGifs.postValue(repo.getAllGifs())
@@ -82,6 +88,7 @@ class CatsViewModel: ViewModel() {
         }
 
     }
+
     private fun getFavoritesFromAPI() = viewModelScope.launch {
         // Can use this to check if the Web API and Room match
         try {
@@ -90,14 +97,17 @@ class CatsViewModel: ViewModel() {
             getSavedFavourites()
         }
     }
+
     private fun getSavedFavourites() = viewModelScope.launch {
         repo.getLocalFavs().collect { _savedFavourites.postValue(it) }
     }
+
     fun addFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
-        if(repo.addFavorite(img.imgId).isSuccessful){
+        if (repo.addFavorite(img.imgId).isSuccessful) {
             repo.insertLocal(img)
         }
     }
+
     fun removeFavorite(img: LocalFavoritedImg) = viewModelScope.launch {
         try {
             if (repo.removeFavorite(img.id ?: "placeholder").isSuccessful) {

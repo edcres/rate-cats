@@ -13,7 +13,10 @@ import retrofit2.Response
 private const val TAG = "Repo__TAG"
 private const val SUB_ID = "00001"
 
-class CatsRepository(private val roomDb: CatsRoomDatabase) {
+class CatsRepository {
+
+    lateinit var roomDb: CatsRoomDatabase
+
     suspend fun getAllPhotos(): List<CatPhoto> = CatsApi.catsApiService.getAllPhotos()
     suspend fun getAllGifs(): List<CatPhoto> = CatsApi.catsApiService.getAllGifs()
     suspend fun getFavoritesFromAPI(): List<FavImgResponse> {
