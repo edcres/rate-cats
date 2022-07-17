@@ -13,6 +13,7 @@ import com.example.ratecats.data.room.CatsRoomDatabase
 import com.example.ratecats.data.room.LocalFavoritedImg
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 
 private const val TAG = "SharedVM__TAG"
 
@@ -67,7 +68,7 @@ class CatsViewModel: ViewModel() {
     private fun getAllPhotos() = viewModelScope.launch {
         try {
             _allPhotos.postValue(repo.getAllPhotos())
-        } catch (exception: Exception) {
+        } catch (exception: UnknownHostException) {
             Log.e(TAG, "getAllPhotos: $exception")
             // Expected an int but was NULL at path $[99].width
         }
@@ -75,7 +76,7 @@ class CatsViewModel: ViewModel() {
     private fun getAllGifs() = viewModelScope.launch {
         try {
             _allGifs.postValue(repo.getAllGifs())
-        } catch (exception: Exception) {
+        } catch (exception: UnknownHostException) {
             // Probably bad internet connection
             Log.e(TAG, "getAllGifs: $exception")
         }
@@ -85,7 +86,7 @@ class CatsViewModel: ViewModel() {
         // Can use this to check if the Web API and Room match
         try {
             _apiFavourites.postValue(repo.getFavoritesFromAPI())
-        } catch (exception: java.lang.Exception) {
+        } catch (exception: UnknownHostException) {
             getSavedFavourites()
         }
     }
@@ -105,7 +106,7 @@ class CatsViewModel: ViewModel() {
             } else {
                 Log.e(TAG, "removeFavorite: delete failed")
             }
-        } catch (exception: Exception) {
+        } catch (exception: UnknownHostException) {
             // Data is removed but it crashes probably bc an item is not found in a list,
             //  or because there's no connection.
             Log.e(TAG, "removeFavorite: \n$exception")
