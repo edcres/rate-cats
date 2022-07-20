@@ -12,7 +12,7 @@
             android:id="@+id/favorites_cats_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/cat_photo_item"/>
+            tools:listitem="@layout/cat_photo_item" />
 
     </FrameLayout>
 </layout>

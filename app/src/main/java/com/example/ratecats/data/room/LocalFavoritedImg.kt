@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "favorite_img_table")
-data class LocalFavoritedImg (
+data class LocalFavoritedImg(
     @PrimaryKey
     @ColumnInfo(name = "img_id")
     val imgId: String,

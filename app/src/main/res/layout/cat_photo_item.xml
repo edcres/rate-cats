@@ -28,21 +28,21 @@
                 android:id="@+id/favorite_off_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="@color/transparent"
                 app:srcCompat="@drawable/ic_favorite_off_24"
-                android:layout_gravity="top|end"
                 app:tint="@color/favorite_icon" />
 
             <ImageButton
                 android:id="@+id/favorite_on_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="@color/transparent"
                 android:visibility="gone"
                 app:srcCompat="@drawable/ic_favorite_on_24"
-                android:layout_gravity="top|end"
                 app:tint="@color/favorite_icon" />
 
         </com.google.android.material.card.MaterialCardView>

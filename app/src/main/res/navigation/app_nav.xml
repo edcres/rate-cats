@@ -5,12 +5,13 @@
     android:id="@+id/app_nav"
     app:startDestination="@id/categories">
 
-<!--    NOTE: the ids if these fragments need to match the ids of the bottom nav bar btns-->
+    <!--NOTE: the ids if these fragments need to match the ids of the
+        bottom nav bar btns in order for bottom bar navigation to work-->
     <fragment
         android:id="@+id/categories"
         android:name="com.example.ratecats.ui.fragments.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories">
         <action
             android:id="@+id/action_categoriesFragment_to_favoritesFragment"
             app:destination="@id/favorites" />
@@ -22,7 +23,7 @@
         android:id="@+id/favorites"
         android:name="com.example.ratecats.ui.fragments.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_favoritesFragment_to_categoriesFragment"
             app:destination="@id/categories" />
@@ -31,7 +32,7 @@
         android:id="@+id/gifs"
         android:name="com.example.ratecats.ui.fragments.GifsFragment"
         android:label="fragment_gifs"
-        tools:layout="@layout/fragment_gifs" >
+        tools:layout="@layout/fragment_gifs">
         <action
             android:id="@+id/action_gifsFragment_to_categoriesFragment"
             app:destination="@id/categories" />

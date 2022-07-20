@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
     version = 2,
     exportSchema = false
 )
-abstract class CatsRoomDatabase: RoomDatabase() {
+abstract class CatsRoomDatabase : RoomDatabase() {
 
     abstract fun favoritedImgDao(): FavoritedImgDao
 
@@ -21,12 +21,12 @@ abstract class CatsRoomDatabase: RoomDatabase() {
 
         fun getInstance(context: Context): CatsRoomDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance= Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CatsRoomDatabase::class.java,
                     DATABASE_NAME
                 ).fallbackToDestructiveMigration().build()
-                INSTANCE= instance
+                INSTANCE = instance
                 instance
             }
         }

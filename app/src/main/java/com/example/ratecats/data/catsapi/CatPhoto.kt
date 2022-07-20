@@ -2,12 +2,11 @@ package com.example.ratecats.data.catsapi
 
 import com.squareup.moshi.Json
 
-data class CatPhoto (
+data class CatPhoto(
     @Json(name = "id")
     val id: String,
     @Json(name = "url")
     val imgSrcUrl: String,
-    // todo: the breed attribute might not work
     @Json(name = "breeds")
     val breeds: List<Any>,
     @Json(name = "width")

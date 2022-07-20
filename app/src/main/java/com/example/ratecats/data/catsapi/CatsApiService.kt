@@ -16,6 +16,7 @@ private const val API_KEY_VAR = "x-api-key"
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
+
 // http interceptor for logging
 private val interceptor = HttpLoggingInterceptor().apply {
     level = HttpLoggingInterceptor.Level.BODY
@@ -37,7 +38,6 @@ interface CatsApiService {
     @GET("$API_V/images/search?mime_types=gif&limit=100")
     suspend fun getAllGifs(): List<CatPhoto>
 
-    // Favorites
     @Headers("$API_KEY_VAR: ${BuildConfig.CATS_API_KEY}")
     @GET("$API_V/favourites?limit=100")
     suspend fun getMyFavorites(
@@ -58,7 +58,7 @@ interface CatsApiService {
 }
 
 object CatsApi {
-    val catsApiService : CatsApiService by lazy {
+    val catsApiService: CatsApiService by lazy {
         retrofit.create(CatsApiService::class.java)
     }
 }

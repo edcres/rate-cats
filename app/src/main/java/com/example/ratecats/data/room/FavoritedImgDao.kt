@@ -7,8 +7,10 @@ import kotlinx.coroutines.flow.Flow
 interface FavoritedImgDao {
     @Query("SELECT * FROM favorite_img_table ORDER BY img_url ASC")
     fun getFavoritedImages(): Flow<List<LocalFavoritedImg>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(localFavoritedImg: LocalFavoritedImg)
+
     @Delete
     suspend fun delete(localFavoritedImg: LocalFavoritedImg)
 }

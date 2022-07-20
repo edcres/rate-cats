@@ -4,6 +4,4 @@
     <string name="favorites">favorites</string>
     <string name="gifs">gifs</string>
     <string name="categories">categories</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

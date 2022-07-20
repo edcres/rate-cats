@@ -4,15 +4,15 @@
         android:id="@+id/gifs"
         android:enabled="true"
         android:icon="@drawable/ic_gifs_24"
-        android:title="@string/gifs"/>
+        android:title="@string/gifs" />
     <item
         android:id="@+id/categories"
         android:enabled="true"
         android:icon="@drawable/ic_ordered_list_24"
-        android:title="@string/categories"/>
+        android:title="@string/categories" />
     <item
         android:id="@+id/favorites"
         android:enabled="true"
         android:icon="@drawable/ic_star_24"
-        android:title="@string/favorites"/>
+        android:title="@string/favorites" />
 </menu>
