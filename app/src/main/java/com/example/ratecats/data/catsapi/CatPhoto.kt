@@ -8,7 +8,7 @@ data class CatPhoto(
     @Json(name = "url")
     val imgSrcUrl: String,
     @Json(name = "breeds")
-    val breeds: List<Any>,
+    val breeds: List<Any>?,
     @Json(name = "width")
     val width: Int,
     @Json(name = "height")
