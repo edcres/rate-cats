@@ -8,6 +8,7 @@ The purpose of this app is mainly to showcase how to receive and send different 
 ### Tools and skills used:
 
 - MVVM architecture
+  - Shared ViewModel
 - Material Design
 - Jetpack Navigation Component
 - Bottom navigation
