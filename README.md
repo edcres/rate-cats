@@ -1,7 +1,7 @@
 # rate-cats
 
-Android App to rate pictures and gifs of cats
-The purpose of this app is mainly to showcase how to receive and send different request queries to an API using retrofit
+Android App to rate pictures and gifs of cats.
+The purpose of this app is mainly to showcase how to receive and send different request queries to an API using retrofit.
 
 ---
 
