@@ -14,15 +14,14 @@ The purpose of this app is mainly to showcase how to receive and send different 
 - Bottom navigation
 - SQLite Room storage
 - REST APIs
-  - Retrifit 2
-    - For the coinpaprika and the cryptopanic APIs
-    - Complex quieries (GET, POST, DELETE)
+  - Retrofit 2
+    - Complex queries (GET, POST, DELETE)
   - Moshi
 - Glide
 - LiveData
   - Livedata Observers
   - Kotlin Flow
-- Kotlin coroutines (for synchronous excecutions)
+- Kotlin coroutines (for synchronous executions)
 - RecyclerView
 
 ---
