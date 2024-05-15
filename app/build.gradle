@@ -43,6 +43,7 @@ dependencies {
     def glide = '4.13.0'
     def okhttp3 = '4.9.0'
     def roomVersion = '2.3.0'
+    def lifecycleVersion = '2.4.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.1'
@@ -67,4 +68,7 @@ dependencies {
     // for debugging
     implementation "com.squareup.okhttp3:okhttp:$okhttp3"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3"
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
 }
